@@ -17,6 +17,7 @@ using com.spoonacular;
 using Org.OpenAPITools.Client;
 using Org.OpenAPITools.Model;
 using WellBites.Views;
+using WellBites.MVVM.Views;
 
 namespace WellBites
 {
@@ -78,7 +79,8 @@ namespace WellBites
                 ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
             }
             //FrameMain.Content = new AuthPage();
-            FrameMain.Content = new CookingPage();
+            //FrameMain.Content = new CookingPage();
+            FrameMain.Content = new DashboardPage();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
