@@ -37,7 +37,17 @@
 
 			</TextBox>
 			<Button Grid.Row="0" Grid.Column="1" Style="{DynamicResource RoundedButton}" Padding="10" />
-			<ListBox Grid.ColumnSpan="2" Grid.Row="1" Padding="10" ItemsSource="{Binding SuggestedIngredients}">
+			<ListBox x:Name="autocompleteSuggestions" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" ItemsSource="{Binding SuggestedIngredients}" Visibility="{Binding AutocompletePopupVisibility}" Panel.ZIndex="100"
+				Background="{DynamicResource BackgroundColor}"	BorderBrush="Black" >
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="SelectionChanged">
+						<i:InvokeCommandAction Command="{Binding IngredientSelectedCommand}" CommandParameter="{Binding SelectedIndex, ElementName=autocompleteSuggestions}" />
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+				
+			</ListBox>
+			<ListBox x:Name="selectedIngredients" Grid.ColumnSpan="2" Grid.Row="1" ItemsSource="{Binding SelectedIngredients}" >
+				
 			</ListBox>
 		</Grid>
 	</Grid>

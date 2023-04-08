@@ -26,12 +26,34 @@ namespace WellBites.MVVM
 			}
 			}
 		public RelayCommand SearchChangedCommand { get; set; }
-		public string SearchQuery { get; set; }
 
+		public Visibility AutocompletePopupVisibility
+		{
+			get
+			{
+				if (SearchQuery.Length > 0) return Visibility.Visible;
+				return Visibility.Hidden;
+			}
+		}
+		string searchQuery;
+		public string SearchQuery
+		{
+			get
+			{
+				return searchQuery;
+			}
+			set
+			{
+				searchQuery = value;
+				OnPropertyChanged();
+			}
+		}
+
+		public ObservableCollection<Ingredient>  SelectedIngredients { get; set; }
 		private void GetAutocomplete()
 		{
 			var apiInstance = new IngredientsApi();
-
+			if (searchQuery.Length <= 0) return;
 			try
 			{
 				// Search Recipes by Ingredients
@@ -45,11 +67,26 @@ namespace WellBites.MVVM
 				MessageBox.Show(ex.Message);
 			}
 		}
+		public RelayCommand IngredientSelectedCommand { get; set; }
 		public CookingViewModel()
 		{
+			SearchQuery = "";
+			SelectedIngredients = new ObservableCollection<Ingredient>();
 			SearchChangedCommand = new RelayCommand((o) =>
 			{
 				GetAutocomplete();
+				OnPropertyChanged(nameof(AutocompletePopupVisibility));
+			});
+			IngredientSelectedCommand = new RelayCommand((selectedIndex) =>
+			{
+				if ((int)selectedIndex < 0) return;
+				Ingredient ing = SuggestedIngredients[(int)selectedIndex];
+				SelectedIngredients.Add(ing);
+				SearchQuery = "";
+				OnPropertyChanged(nameof(AutocompletePopupVisibility));
+				SuggestedIngredients.Clear();
+				
+
 			});
 		}
 
