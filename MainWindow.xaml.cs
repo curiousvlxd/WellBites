@@ -77,7 +77,8 @@ namespace WellBites
                 ThemesToggleButton.IsChecked = true;
                 ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
             }
-            FrameMain.Content = new AuthPage();
+            //FrameMain.Content = new AuthPage();
+            FrameMain.Content = new CookingPage();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
