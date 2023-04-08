@@ -20,6 +20,7 @@ namespace WellBites.Models
 		public List<string> Cuisines { get; set; }
 		public string Instructions { get; set; }
 		public int? CookingTimeInMinutes { get; set; }
+		public bool IsFavorite { get; set; }
 		public string ImageURL
 		{
 			get
