@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MVVM\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Fonts\Bookstory.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
