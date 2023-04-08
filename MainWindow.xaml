@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:WellBites"
         SizeChanged="OnWindowSizeChanged"
         mc:Ignorable="d"
@@ -112,7 +113,8 @@
             </Border>
             <Grid Grid.Row="1">
                 <TextBlock VerticalAlignment="Top" Margin="0,45,0,0" Foreground="{DynamicResource LogoTextColor}" Text="WellBites" FontSize="150" FontFamily="{DynamicResource Bookstory}"  Width="360" Height="140" HorizontalAlignment="Center"></TextBlock>
-
+                <fa:ImageAwesome Icon="Envelope" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="39" Width="100" />
+                <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="39" Width="100" Margin="443,381,0,0" />
             </Grid>
         </Grid>
     </Border>
