@@ -33,7 +33,7 @@ namespace WellBites.Views
 
         private void BtnSignIn_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void BtnSignUp_OnClick(object sender, RoutedEventArgs e)

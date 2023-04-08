@@ -14,9 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WellBites.Helpers;
 using com.spoonacular;
+using MaterialDesignThemes.Wpf;
 using Org.OpenAPITools.Client;
 using Org.OpenAPITools.Model;
 using WellBites.Views;
+using Color = System.Drawing.Color;
 
 namespace WellBites
 {
@@ -24,13 +26,15 @@ namespace WellBites
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        public MainWindow()
+    {   
+        private AuthPage _authPage;
+        public MainWindow(AuthPage authPage, string apiKey)
         {
             InitializeComponent();
+            _authPage = authPage;
             WindowHelper._this = this;
             this.SourceInitialized += new EventHandler(WindowHelper.win_SourceInitialized);
-			Configuration.ApiKey.Add("x-api-key", "eab476655bea4f4386fa18dd037c2c88");
+			Configuration.ApiKey.Add("x-api-key", $"{apiKey}");
 		}
 
         private void OnThemesClick(object sender, RoutedEventArgs e)
@@ -75,10 +79,10 @@ namespace WellBites
             if (WindowHelper.ShouldSystemUseDarkMode())
             {
                 ThemesToggleButton.IsChecked = true;
-                ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
+                ThemesController.SetTheme(ThemesController.ThemeTypes.Dark); 
             }
-            //FrameMain.Content = new AuthPage();
-            FrameMain.Content = new CookingPage();
+
+            FrameMain.Content = _authPage;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

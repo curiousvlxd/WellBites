@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,15 +38,13 @@ namespace WellBites.Views
         }
 
         private void BtnGoNext_OnClick_OnClick(object sender, RoutedEventArgs e)
-        {
+        {   
             MessageBox.Show(PbPassword.Password);
             MessageBox.Show(PbPasswordRepeat.Password);
         }
 
         public bool isFormValid()
         {
-
-            
 
             return true;
         }
@@ -80,6 +79,18 @@ namespace WellBites.Views
                 btnButtonUnhide.Visibility = Visibility.Collapsed;
                 btnButtonHide.Visibility = Visibility.Visible;
             }
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void NumbereValidationDatePicker(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9/]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

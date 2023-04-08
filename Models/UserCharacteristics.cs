@@ -21,7 +21,7 @@ namespace WellBites.Models
 		VeryActive, //intense exercise 6-7 times/week
 		ExtraActive //very intense exercise daily or physical job
 	}
-	internal class UserCharacteristics
+	public class UserCharacteristics
 	{	
 		public int Id { get; set; }
 		public int Weight { get; set; }

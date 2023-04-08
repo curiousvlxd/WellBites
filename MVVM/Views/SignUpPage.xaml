@@ -6,15 +6,30 @@
       xmlns:local="clr-namespace:WellBites.Views"
       xmlns:fa="http://schemas.fontawesome.io/icons/"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+      xmlns:models="clr-namespace:WellBites.Models"
       mc:Ignorable="d" 
       d:DesignHeight="830" d:DesignWidth="970"
       Title="SignUpPage">
+
+    <Page.Resources>
+        <ObjectDataProvider x:Key="Sex" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="models:Sex"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="Activity" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="models:Activity"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>
 
     <Grid Height="830" Width="970">
 
         <TextBlock FontFamily="{DynamicResource Bookstory}" FontSize="40" FontWeight="DemiBold" Height="42" Width="252" VerticalAlignment="Top" TextAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource TextColor}" Margin="0,48,0,0">Registration</TextBlock>
 
-        <Grid Width="414" Height="300" Margin="0,0,0,405" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <Grid Width="414" Height="300" Margin="0,125,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Border Height="56"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent" Margin="0,11,0,0" Width="414" >
                 <Grid>
                     <fa:ImageAwesome Icon="User" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="13,0,0,0" />
@@ -96,13 +111,22 @@
                 </Grid>
             </Border>
         </Grid>
+        <ComboBox x:Name="cbActivity" FontSize="20" FontWeight="DemiBold" materialDesign:HintAssist.Hint="Activity" Style="{StaticResource MaterialDesignComboBox}" Foreground="{DynamicResource TextColor}" ItemsSource="{Binding Source={StaticResource Activity}}" Height="36" Margin="278,498,567,0" VerticalAlignment="Top"/>
 
-        <Button Click="BtnGoBack_OnClick" VerticalAlignment="Top" HorizontalContentAlignment="Center" x:Name="btnGoBack" Width="193" Height="40" Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="278,435,0,0">
+        <ComboBox x:Name="cbSex" FontSize="20" FontWeight="DemiBold" materialDesign:HintAssist.Hint="Sex" Foreground="{DynamicResource TextColor}" ItemsSource="{Binding Source={StaticResource Sex}}" Height="36" Margin="278,438,587,0" VerticalAlignment="Top"/>
+
+        <DatePicker x:Name="dpDateOfBirth" PreviewTextInput="NumbereValidationDatePicker" FontWeight="DemiBold" materialDesign:HintAssist.Hint="Date of birth" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="278,559,552,0" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="tbWeight" PreviewTextInput="NumberValidationTextBox" materialDesign:HintAssist.Hint="Weight (in kg)" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="DemiBold" Margin="560,439,278,356" RenderTransformOrigin="0.455,0.571"/>
+
+        <TextBox x:Name="tbHeight" PreviewTextInput="NumberValidationTextBox" materialDesign:HintAssist.Hint="Height (in cm)" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="DemiBold" Margin="560,499,278,296" RenderTransformOrigin="0.455,0.571"/>
+
+        <Button Click="BtnGoBack_OnClick" VerticalAlignment="Top" HorizontalContentAlignment="Center" x:Name="btnGoBack" Width="193" Height="40" Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="278,629,0,0">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{DynamicResource ButtonColor}" FontSize="14" Text="Back" Margin="0,0,0,0"/>
             </Grid>
         </Button>
-        <Button Click="BtnGoNext_OnClick_OnClick"  VerticalAlignment="Top" x:Name="btnGoNext" Width="193" Height="40"  Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="499,435,0,0">
+        <Button Click="BtnGoNext_OnClick_OnClick"  VerticalAlignment="Top" x:Name="btnGoNext" Width="193" Height="40"  Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="499,629,0,0">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{DynamicResource ButtonColor}" FontSize="14" Text="Next" Margin="0,0,0,0"/>
             </Grid>
