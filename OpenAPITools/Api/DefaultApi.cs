@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using Org.OpenAPITools.Client;
-using com.spoonacular.client.model;
+using Org.OpenAPITools.Model;
 
 namespace com.spoonacular
 {
@@ -133,7 +133,7 @@ namespace com.spoonacular
             String[] authSettings = new String[] { "apiKeyScheme" };
 
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            IRestResponse response = (RestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling AnalyzeRecipe: " + response.Content, response.Content);

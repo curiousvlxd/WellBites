@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using Org.OpenAPITools.Client;
-using com.spoonacular.client.model;
+
+using Org.OpenAPITools.Model;
 
 namespace com.spoonacular
 {
