@@ -132,7 +132,7 @@
                     </Grid>
                 </Border>
 
-                <Button FontFamily="JetBrainsMonoRegular" HorizontalAlignment="Left" VerticalAlignment="Top" Name="BtnForgotpassword" Height="20" Width="130" Click="BtnForgotpassword_OnClick" FontSize="14" Background="Transparent" Foreground="{DynamicResource LogoTextColor}" BorderBrush="Transparent" FontWeight="SemiBold" Content="Forgot password" Margin="546,387,0,0">
+                <Button HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="BtnForgotPassword" Height="20" Width="130" Click="BtnForgotPassword_OnClick" FontSize="14" Background="Transparent" Foreground="{DynamicResource LogoTextColor}" BorderBrush="Transparent" FontWeight="SemiBold" Content="Forgot password" Margin="546,385,0,0">
                     <Button.Resources>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Template">

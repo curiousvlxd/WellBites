@@ -79,7 +79,7 @@ namespace WellBites
             }
         }
 
-        private void BtnForgotpassword_OnClick(object sender, RoutedEventArgs e)
+        private void BtnForgotPassword_OnClick(object sender, RoutedEventArgs e)
         {
         }
    
