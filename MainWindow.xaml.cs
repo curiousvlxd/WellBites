@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WellBites.Helpers;
+using com.spoonacular;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace WellBites
 {
@@ -26,7 +29,9 @@ namespace WellBites
             InitializeComponent();
             WindowHelper._this = this;
             this.SourceInitialized += new EventHandler(WindowHelper.win_SourceInitialized);
-        }
+			Configuration.ApiKey.Add("x-api-key", "eab476655bea4f4386fa18dd037c2c88");
+
+		}
 
         private void OnThemesClick(object sender, RoutedEventArgs e)
         {
@@ -77,5 +82,26 @@ namespace WellBites
         private void BtnForgotpassword_OnClick(object sender, RoutedEventArgs e)
         {
         }
-    }
+   
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			var apiInstance = new RecipesApi();
+			var ingredients = "carrots, tomatoes";  // string | A comma-separated list of ingredients that the recipes should contain. (optional) 
+			var number = 10;  // int? | The maximum number of items to return (between 1 and 100). Defaults to 10. (optional)  (default to 10)
+			var limitLicense = true;  // bool? | Whether the recipes should have an open license that allows display with proper attribution. (optional)  (default to true)
+			var ranking = 1;  // decimal? | Whether to maximize used ingredients (1) or minimize missing ingredients (2) first. (optional) 
+			var ignorePantry = false;  // bool? | Whether to ignore typical pantry items, such as water, salt, flour, etc. (optional)  (default to false)
+
+			try
+			{
+				// Search Recipes by Ingredients
+				List <SearchRecipesByIngredients200ResponseInner> result = apiInstance.SearchRecipesByIngredients(ingredients, number, limitLicense, ranking, ignorePantry);
+				MessageBox.Show(result[0].ToString());
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
+	}
 }
