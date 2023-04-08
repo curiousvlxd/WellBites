@@ -64,5 +64,14 @@ namespace WellBites
             }
             else BorderMain.Margin = new Thickness(0);
         }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (WindowHelper.ShouldSystemUseDarkMode())
+            {
+                ThemesToggleButton.IsChecked = true;
+                ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
+            }
+        }
     }
 }
