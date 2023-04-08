@@ -15,8 +15,11 @@ namespace WellBites.MVVM
 	internal class CookingViewModel:ObservableObject
 	{
 		ObservableCollection<Ingredient> suggestedIngredients;
+		ObservableCollection<Recipe> foundRecipes;
+
 		public ObservableCollection<Ingredient> SuggestedIngredients { get
 			{
+
 				return suggestedIngredients;
 			}
 			set
@@ -25,13 +28,48 @@ namespace WellBites.MVVM
 				OnPropertyChanged();
 			}
 			}
-		public RelayCommand SearchChangedCommand { get; set; }
-		public string SearchQuery { get; set; }
 
+		public ObservableCollection<Recipe> FoundRecipes
+		{
+			get
+			{
+				return foundRecipes;
+			}
+			set
+			{
+				foundRecipes = value;
+				OnPropertyChanged();
+			}
+		}
+		public RelayCommand SearchChangedCommand { get; set; }
+
+		public Visibility AutocompletePopupVisibility
+		{
+			get
+			{
+				if (SearchQuery.Length > 0) return Visibility.Visible;
+				return Visibility.Hidden;
+			}
+		}
+		string searchQuery;
+		public string SearchQuery
+		{
+			get
+			{
+				return searchQuery;
+			}
+			set
+			{
+				searchQuery = value;
+				OnPropertyChanged();
+			}
+		}
+
+		public ObservableCollection<Ingredient>  SelectedIngredients { get; set; }
 		private void GetAutocomplete()
 		{
 			var apiInstance = new IngredientsApi();
-
+			if (searchQuery.Length <= 0) return;
 			try
 			{
 				// Search Recipes by Ingredients
@@ -45,11 +83,45 @@ namespace WellBites.MVVM
 				MessageBox.Show(ex.Message);
 			}
 		}
+		public RelayCommand IngredientSelectedCommand { get; set; }
+		public RelayCommand CookCommand { get; set; }
 		public CookingViewModel()
 		{
+			SearchQuery = "";
+			SelectedIngredients = new ObservableCollection<Ingredient>();
 			SearchChangedCommand = new RelayCommand((o) =>
 			{
 				GetAutocomplete();
+				OnPropertyChanged(nameof(AutocompletePopupVisibility));
+			});
+			IngredientSelectedCommand = new RelayCommand((selectedIndex) =>
+			{
+				if ((int)selectedIndex < 0) return;
+				Ingredient ing = SuggestedIngredients[(int)selectedIndex];
+				SelectedIngredients.Add(ing);
+				SearchQuery = "";
+				OnPropertyChanged(nameof(AutocompletePopupVisibility));
+				SuggestedIngredients.Clear();
+				
+
+			});
+			CookCommand = new RelayCommand((o) =>
+			{
+				if(SelectedIngredients.Count<1)
+				{
+					MessageBox.Show("You haven't selected any ingredients.", "Can't cook!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+				}
+				var apiInstance = new RecipesApi();
+				string commaSeparatedIngredients = "";
+				foreach (var ing in SelectedIngredients) {
+					commaSeparatedIngredients += ing.ToString();
+					commaSeparatedIngredients += ",";
+				}
+				List<SearchRecipesByIngredients200ResponseInner> response = apiInstance.SearchRecipesByIngredients(commaSeparatedIngredients, 10, false, 2, false);
+				FoundRecipes = new ObservableCollection<Recipe>(response.Select(rec => new Recipe() { Title = rec.Title }));
+
+
+
 			});
 		}
 
