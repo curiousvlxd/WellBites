@@ -16,6 +16,7 @@ using WellBites.Helpers;
 using com.spoonacular;
 using Org.OpenAPITools.Client;
 using Org.OpenAPITools.Model;
+using WellBites.Views;
 
 namespace WellBites
 {
@@ -30,7 +31,6 @@ namespace WellBites
             WindowHelper._this = this;
             this.SourceInitialized += new EventHandler(WindowHelper.win_SourceInitialized);
 			Configuration.ApiKey.Add("x-api-key", "eab476655bea4f4386fa18dd037c2c88");
-
 		}
 
         private void OnThemesClick(object sender, RoutedEventArgs e)
@@ -77,13 +77,10 @@ namespace WellBites
                 ThemesToggleButton.IsChecked = true;
                 ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
             }
+            FrameMain.Content = new AuthPage();
         }
 
-        private void BtnForgotPassword_OnClick(object sender, RoutedEventArgs e)
-        {
-        }
-   
-		private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			var apiInstance = new RecipesApi();
 			var ingredients = "carrots, tomatoes";  // string | A comma-separated list of ingredients that the recipes should contain. (optional) 
