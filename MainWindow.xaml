@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:WellBites"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         SizeChanged="OnWindowSizeChanged"
+        Loaded="MainWindow_OnLoaded"
         mc:Ignorable="d"
         WindowStyle="None"
         Background="Transparent"
@@ -112,9 +114,7 @@
                 </Grid>
             </Border>
             <Grid Grid.Row="1">
-                <TextBlock VerticalAlignment="Top" Margin="0,45,0,0" Foreground="{DynamicResource LogoTextColor}" Text="WellBites" FontSize="150" FontFamily="{DynamicResource Bookstory}"  Width="360" Height="140" HorizontalAlignment="Center"></TextBlock>
-                <fa:ImageAwesome Icon="Envelope" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="39" Width="100" />
-                <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="39" Width="100" Margin="443,381,0,0" />
+                <Frame NavigationUIVisibility="Hidden" x:Name="FrameMain"></Frame>
             </Grid>
         </Grid>
     </Border>
