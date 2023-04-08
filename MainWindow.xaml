@@ -12,6 +12,7 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
+        
         WindowStartupLocation="CenterScreen"
         Title="WellBites" Height="800" Width="1000">
     <Window.Resources>
@@ -119,18 +120,50 @@
                 <Border Height="56"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent" Margin="0, 252,0,0" Width="414" >
                     <Grid>
                         <fa:ImageAwesome Icon="User" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="13,0,0,0" />
-                        <TextBox x:Name="TbEmail" Foreground="Gray" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Foreground="#C1C3C6" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1"></TextBox>
+                        <TextBox x:Name="TbEmail" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1"></TextBox>
                     </Grid>
                 </Border>
 
                 <Border Height="56" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent"  Margin="0, 326,0,0" Width="414" >
                     <Grid Height="50" VerticalAlignment="Top">
                         <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="14,0,0,0" />
-                        <PasswordBox materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPassword" Foreground="Gray" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="#C1C3C6" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
-                        <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPassword" Foreground="Gray" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="#C1C3C6" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="47,12,52,8"/>
+                        <PasswordBox materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
+                        <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="47,12,52,8"/>
                     </Grid>
                 </Border>
 
+                <Button FontFamily="JetBrainsMonoRegular" HorizontalAlignment="Left" VerticalAlignment="Top" Name="BtnForgotpassword" Height="20" Width="130" Click="BtnForgotpassword_OnClick" FontSize="14" Background="Transparent" Foreground="{DynamicResource LogoTextColor}" BorderBrush="Transparent" FontWeight="SemiBold" Content="Forgot password" Margin="546,387,0,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.6" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+
+                <Button VerticalAlignment="Top" x:Name="btn_signin" Width="193" Height="40"  Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" Margin="262,412,0,0"  HorizontalAlignment="Left">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{DynamicResource ButtonColor}" FontSize="14" Text="Sign In" Margin="0,0,0,0"/>
+                    </Grid>
+                </Button>
+                <Button VerticalAlignment="Top" x:Name="btn_signin_Copy" Width="193" Height="40"  Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" Margin="483,412,0,0"  HorizontalAlignment="Left">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{DynamicResource ButtonColor}" FontSize="14" Text="Sign Up" Margin="0,0,0,0"/>
+                    </Grid>
+                </Button>
             </Grid>
         </Grid>
     </Border>

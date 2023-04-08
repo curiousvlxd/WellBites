@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Fonts\Bookstory.ttf" />
+    <None Remove="Fonts\JetBrainsMono-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,9 @@
 
   <ItemGroup>
     <Resource Include="Fonts\Bookstory.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\JetBrainsMono-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

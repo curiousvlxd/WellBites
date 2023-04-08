@@ -70,6 +70,19 @@ namespace WellBites
             else BorderMain.Margin = new Thickness(0);
         }
 
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (WindowHelper.ShouldSystemUseDarkMode())
+            {
+                ThemesToggleButton.IsChecked = true;
+                ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
+            }
+        }
+
+        private void BtnForgotpassword_OnClick(object sender, RoutedEventArgs e)
+        {
+        }
+   
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			var apiInstance = new RecipesApi();
