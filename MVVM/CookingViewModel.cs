@@ -117,6 +117,7 @@ namespace WellBites.MVVM
 		public RelayCommand CookCommand { get; set; }
 		public RelayCommand RecipeSelectedCommand { get; set; }
 		public RelayCommand BackToRecipeListCommand { get; set; }
+		public RelayCommand DeleteIngredientCommand { get; set; }
 		public CookingViewModel()
 		{
 			RecipeDetailsVisibility = Visibility.Hidden;
@@ -178,6 +179,12 @@ namespace WellBites.MVVM
 				RecipeDetailsVisibility = Visibility.Hidden;
 				RightSideTopText = "Recipes";
 			});
+
+			DeleteIngredientCommand = new RelayCommand((ingredient) =>
+			{
+				SelectedIngredients.Remove((Ingredient)ingredient);
+			});
+
 			RecipeDetailsViewModel = new RecipeDetailsViewModel();
 		}
 
