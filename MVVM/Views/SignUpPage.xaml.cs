@@ -24,5 +24,14 @@ namespace WellBites.Views
         {
             InitializeComponent();
         }
+
+        private void BtnGoBack_OnClick(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new AuthPage();
+        }
+
+        private void BtnGoNext_OnClick_OnClick(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
