@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using WellBites.Core;
 using WellBites.Models;
 using WellBites.MVVM.ViewModels;
@@ -108,10 +109,15 @@ namespace WellBites.MVVM
 			try
 			{
 				// Search Recipes by Ingredients
-				List<AutocompleteIngredientSearch200ResponseInner> response = apiInstance.AutocompleteIngredientSearch(SearchQuery, 10, false, "", "en");
-				IEnumerable<Ingredient> result;
-				result = response.Select(ing => new Ingredient() { Name = ing.Name, Image = ing.Image }); //map to our own model type
-				SuggestedIngredients = new ObservableCollection<Ingredient>(result);
+				Task.Run(() => {
+					List<AutocompleteIngredientSearch200ResponseInner> response = apiInstance.AutocompleteIngredientSearch(SearchQuery, 10, false, "", "en");
+					IEnumerable<Ingredient> result;
+					result = response.Select(ing => new Ingredient() { Name = ing.Name, Image = ing.Image }); //map to our own model type
+					SuggestedIngredients = new ObservableCollection<Ingredient>(result);
+				});
+						  
+					  
+				
 			}
 			catch (Exception ex)
 			{
@@ -162,15 +168,18 @@ namespace WellBites.MVVM
 					commaSeparatedIngredients += ing.ToString();
 					commaSeparatedIngredients += ",";
 				}
-				List<SearchRecipesByIngredients200ResponseInner> response = apiInstance.SearchRecipesByIngredients(commaSeparatedIngredients, 10, false, 2, false);
-				FoundRecipes = new ObservableCollection<Recipe>(response.Select(
-					rec => new Recipe() {
-						Title = rec.Title,
-						Id=Denullify(rec.Id),
-						
-					}));
+				Task.Run(() =>
+				{
+					List<SearchRecipesByIngredients200ResponseInner> response = apiInstance.SearchRecipesByIngredients(commaSeparatedIngredients, 10, false, 2, false);
+					FoundRecipes = new ObservableCollection<Recipe>(response.Select(
+						rec => new Recipe()
+						{
+							Title = rec.Title,
+							Id = Denullify(rec.Id),
 
+						}));
 
+				});
 
 			});
 
