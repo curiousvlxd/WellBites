@@ -73,5 +73,9 @@ namespace WellBites
                 ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
             }
         }
+
+        private void BtnForgotpassword_OnClick(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

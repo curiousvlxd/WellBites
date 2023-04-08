@@ -10,5 +10,7 @@
     <SolidColorBrush x:Key="LogoTextColor" Color="#719C2D"/>
     <SolidColorBrush x:Key="MoonIconColor" Color="#B1C2DD"/>
     <SolidColorBrush x:Key="SunIconColor" Color="#E6B800"/>
+    <SolidColorBrush x:Key="HintAssistColor" Color="#C1C3C6"/>
+    <SolidColorBrush x:Key="ButtonColor" Color="#F9F9FB"/>
 
 </ResourceDictionary>   
