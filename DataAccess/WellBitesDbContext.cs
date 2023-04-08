@@ -10,48 +10,45 @@ namespace WellBites.DataAccess
 {
     public  class WellBitesDbContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserCharacteristics> UserCharacteristics { get; set; }
-
-
         public WellBitesDbContext(DbContextOptions<WellBitesDbContext> options) : base(options)
         {
         }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserCharacteristics> UserCharacteristics { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           modelBuilder.Entity<User>()
+
+            modelBuilder.Entity<User>()
+                .HasKey(u => u.Id);
+
+            modelBuilder.Entity<User>()
                 .HasOne(u => u.Characteristics)
-                .WithOne()
+                .WithOne(uc => uc.User)
                 .HasForeignKey<UserCharacteristics>(uc => uc.Id);
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.Username)
-                .IsUnique();
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.Email)
-                .IsUnique();
+
             modelBuilder.Entity<UserCharacteristics>()
-                .HasIndex(uc => uc.Id)
-                .IsUnique();
-            modelBuilder.Entity<User>()
-                .Property(u => u.Username)
-                .IsRequired();
-            modelBuilder.Entity<User>()
-                .Property(u => u.Password)
-                .IsRequired();
-            modelBuilder.Entity<User>()
-                .Property(u => u.Email)
-                .IsRequired();
+                .HasKey(uc => uc.Id);
+
             modelBuilder.Entity<UserCharacteristics>()
-                .Property(uc => uc.Id)
+                .Property(uc => uc.Weight)
                 .IsRequired();
-            modelBuilder.Entity<UserCharacteristics>()
-                .Property(uc => uc.Age)
-                .IsRequired();
+
             modelBuilder.Entity<UserCharacteristics>()
                 .Property(uc => uc.Height)
                 .IsRequired();
+
             modelBuilder.Entity<UserCharacteristics>()
-                .Property(uc => uc.Weight)
+                .Property(uc => uc.Sex)
+                .IsRequired();
+
+            modelBuilder.Entity<UserCharacteristics>()
+                .Property(uc => uc.Age)
+                .IsRequired();
+
+            modelBuilder.Entity<UserCharacteristics>()
+                .Property(uc => uc.Activity)
                 .IsRequired();
 
             base.OnModelCreating(modelBuilder);

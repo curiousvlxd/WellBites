@@ -29,6 +29,7 @@ namespace WellBites.Models
 		public Sex Sex { get; set; }
 		public int Age { get; set; }
 		public Activity Activity { get; set; }
+        public User User { get; set; }
 
-	}
+    }
 }

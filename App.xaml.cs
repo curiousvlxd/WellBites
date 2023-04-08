@@ -33,14 +33,32 @@ namespace WellBites
                 .ConfigureServices((hostContext, services) =>
                 {
                     var connectionString = hostContext.Configuration.GetConnectionString("DefaultConnection");
-                    services.AddDbContext<WellBitesDbContext>(options => options.UseSqlServer(connectionString));
+                    services.AddDbContext<WellBitesDbContext>(options =>
+                        options.UseSqlServer(connectionString));
                     services.AddTransient<UserManagerService>();
                 })
                 .Build();
-            host.Services.GetRequiredService<WellBitesDbContext>().Database.EnsureCreated();
-            AuthPage authPage = new AuthPage();
-            authPage.DataContext = new UserViewModel(host.Services.GetRequiredService<UserManagerService>());
-            new MainWindow(authPage, host.Services.GetService<IConfiguration>().GetSection("api-keys")["x-api-key"]).Show();
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var dbContext = services.GetRequiredService<WellBitesDbContext>();
+                var configuration = services.GetRequiredService<IConfiguration>();
+                var userManagerService = services.GetRequiredService<UserManagerService>();
+
+                //try
+                //{
+                //    dbContext.Database.Migrate();
+                //    dbContext.SaveChanges();
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message);
+                //}
+
+                AuthPage authPage = new AuthPage();
+                authPage.DataContext = new UserViewModel(userManagerService);
+                new MainWindow(authPage, configuration.GetSection("api-keys")["x-api-key"]).Show();
+            }
         }
     }
 }

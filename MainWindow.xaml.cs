@@ -85,7 +85,7 @@ namespace WellBites
             FrameMain.Content = _authPage;
             //FrameMain.Content = new AuthPage();
             //FrameMain.Content = new CookingPage();
-            FrameMain.Content = new DashboardPage();
+            //FrameMain.Content = new DashboardPage();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
