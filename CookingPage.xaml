@@ -14,19 +14,20 @@
 
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="67*"></ColumnDefinition>
-			<ColumnDefinition Width="13*"/>
-			<ColumnDefinition Width="80*"></ColumnDefinition>
+			<ColumnDefinition/>
+
+			<ColumnDefinition/>
 
 		</Grid.ColumnDefinitions>
 		<Grid Grid.Column="0" Grid.ColumnSpan="2">
 			<Grid.RowDefinitions>
-				<RowDefinition></RowDefinition>
-				<RowDefinition Height="8*"></RowDefinition>
+				<RowDefinition Height="4*"></RowDefinition>
+				<RowDefinition Height="21*"></RowDefinition>
+				<RowDefinition Height="5*"></RowDefinition>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="67*"></ColumnDefinition>
-				<ColumnDefinition Width="13*"></ColumnDefinition>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
 			<TextBox Margin="10,10,10,10" Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 				<i:Interaction.Triggers>
@@ -36,7 +37,7 @@
 				</i:Interaction.Triggers>
 
 			</TextBox>
-			<Button Grid.Row="0" Grid.Column="1" Style="{DynamicResource RoundedButton}" Padding="10" />
+
 			<ListBox x:Name="autocompleteSuggestions" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" ItemsSource="{Binding SuggestedIngredients}" Visibility="{Binding AutocompletePopupVisibility}" Panel.ZIndex="100"
 				Background="{DynamicResource BackgroundColor}"	BorderBrush="Black" >
 				<i:Interaction.Triggers>
@@ -44,11 +45,16 @@
 						<i:InvokeCommandAction Command="{Binding IngredientSelectedCommand}" CommandParameter="{Binding SelectedIndex, ElementName=autocompleteSuggestions}" />
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
-				
+
 			</ListBox>
 			<ListBox x:Name="selectedIngredients" Grid.ColumnSpan="2" Grid.Row="1" ItemsSource="{Binding SelectedIngredients}" >
-				
+
 			</ListBox>
+			<Button Grid.Row="2"  Background="{DynamicResource LogoTextColor}" Command="{Binding CookCommand}"
+					Style="{StaticResource RoundedButton}" Margin="10,10,10,10" Foreground="White" FontSize="30">Cook for me >></Button>
+		</Grid>
+		<Grid Grid.Column="1"> <!--RIGHT SIDE-->
+			<ListBox x:Name="recipesListbox" ItemsSource="{Binding FoundRecipes}"></ListBox>
 		</Grid>
 	</Grid>
 </Page>

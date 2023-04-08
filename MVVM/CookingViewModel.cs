@@ -15,8 +15,11 @@ namespace WellBites.MVVM
 	internal class CookingViewModel:ObservableObject
 	{
 		ObservableCollection<Ingredient> suggestedIngredients;
+		ObservableCollection<Recipe> foundRecipes;
+
 		public ObservableCollection<Ingredient> SuggestedIngredients { get
 			{
+
 				return suggestedIngredients;
 			}
 			set
@@ -25,6 +28,19 @@ namespace WellBites.MVVM
 				OnPropertyChanged();
 			}
 			}
+
+		public ObservableCollection<Recipe> FoundRecipes
+		{
+			get
+			{
+				return foundRecipes;
+			}
+			set
+			{
+				foundRecipes = value;
+				OnPropertyChanged();
+			}
+		}
 		public RelayCommand SearchChangedCommand { get; set; }
 
 		public Visibility AutocompletePopupVisibility
@@ -68,6 +84,7 @@ namespace WellBites.MVVM
 			}
 		}
 		public RelayCommand IngredientSelectedCommand { get; set; }
+		public RelayCommand CookCommand { get; set; }
 		public CookingViewModel()
 		{
 			SearchQuery = "";
@@ -86,6 +103,24 @@ namespace WellBites.MVVM
 				OnPropertyChanged(nameof(AutocompletePopupVisibility));
 				SuggestedIngredients.Clear();
 				
+
+			});
+			CookCommand = new RelayCommand((o) =>
+			{
+				if(SelectedIngredients.Count<1)
+				{
+					MessageBox.Show("You haven't selected any ingredients.", "Can't cook!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+				}
+				var apiInstance = new RecipesApi();
+				string commaSeparatedIngredients = "";
+				foreach (var ing in SelectedIngredients) {
+					commaSeparatedIngredients += ing.ToString();
+					commaSeparatedIngredients += ",";
+				}
+				List<SearchRecipesByIngredients200ResponseInner> response = apiInstance.SearchRecipesByIngredients(commaSeparatedIngredients, 10, false, 2, false);
+				FoundRecipes = new ObservableCollection<Recipe>(response.Select(rec => new Recipe() { Title = rec.Title }));
+
+
 
 			});
 		}
