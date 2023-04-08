@@ -115,6 +115,7 @@
                 <TextBlock VerticalAlignment="Top" Margin="0,45,0,0" Foreground="{DynamicResource LogoTextColor}" Text="WellBites" FontSize="150" FontFamily="{DynamicResource Bookstory}"  Width="360" Height="140" HorizontalAlignment="Center"></TextBlock>
                 <fa:ImageAwesome Icon="Envelope" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="39" Width="100" />
                 <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="39" Width="100" Margin="443,381,0,0" />
+				<!--<Button Margin="152,490,214,157" Click="Button_Click">test</Button>-->
             </Grid>
         </Grid>
     </Border>
