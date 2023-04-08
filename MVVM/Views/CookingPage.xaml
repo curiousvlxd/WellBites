@@ -1,0 +1,150 @@
+﻿<Page x:Class="WellBites.CookingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WellBites" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+	   xmlns:fa="http://schemas.fontawesome.io/icons/"
+	  xmlns:models="clr-namespace:WellBites.Models"
+	  mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+	  xmlns:viewmodel="clr-namespace:WellBites.MVVM"
+	  x:Name="page"
+      Title="CookingPage">
+	<Page.DataContext>
+		<viewmodel:CookingViewModel/>
+	</Page.DataContext>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="37*"/>
+
+			<ColumnDefinition Width="43*"/>
+
+		</Grid.ColumnDefinitions>
+		<Grid Grid.Column="0" Grid.ColumnSpan="2"> <!--MAIN GRID-->
+			<Grid.RowDefinitions>
+				<RowDefinition Height="4*"></RowDefinition>
+				<RowDefinition Height="21*"></RowDefinition>
+				<RowDefinition Height="5*"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="19*"/>
+				<ColumnDefinition Width="21*"/>
+			</Grid.ColumnDefinitions>
+			<Grid> 
+				<!-- for textbox placeholder-->
+
+				<TextBox Margin="10,10,10,10" Name="searchbar" Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="20">
+					<i:Interaction.Triggers>
+						<i:EventTrigger EventName="TextChanged">
+							<i:InvokeCommandAction Command="{Binding SearchChangedCommand}"/>
+						</i:EventTrigger>
+					</i:Interaction.Triggers>
+
+				</TextBox>
+				<TextBlock IsHitTestVisible="False" Text="Search ingredients..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray" FontSize="20">
+					<TextBlock.Style>
+						<Style TargetType="{x:Type TextBlock}">
+							<Setter Property="Visibility" Value="Collapsed"/>
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding Text, ElementName=searchbar}" Value="">
+									<Setter Property="Visibility" Value="Visible"/>
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</TextBlock.Style>
+				</TextBlock>
+			</Grid>
+
+			<ListBox x:Name="autocompleteSuggestions" Grid.Row="1" Padding="10" ItemsSource="{Binding SuggestedIngredients}" Visibility="{Binding AutocompletePopupVisibility}" Panel.ZIndex="100"
+				Background="{DynamicResource BackgroundColor}"	BorderBrush="Black" >
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="SelectionChanged">
+						<i:InvokeCommandAction Command="{Binding IngredientSelectedCommand}" CommandParameter="{Binding SelectedIndex, ElementName=autocompleteSuggestions}" />
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+				<ListBox.ItemTemplate>
+					<DataTemplate DataType="{x:Type models:Ingredient}">
+						<Grid HorizontalAlignment="Stretch">
+						<StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+							<Image Source="{Binding ImageURL}" Width="50" Height="50"/>
+							<TextBlock Text="{Binding Name}"/>
+							
+						</StackPanel>
+							
+						</Grid>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+			<ListBox x:Name="selectedIngredients" Grid.Row="1" ItemsSource="{Binding SelectedIngredients}" HorizontalContentAlignment="Stretch" > <!--LEFT SIDE-->
+				<ListBox.ItemTemplate >
+					<DataTemplate DataType="{x:Type models:Ingredient}" >
+						<Grid HorizontalAlignment="Stretch" >
+							<!--<Border BorderBrush="Black" BorderThickness="1"/>-->
+							<DockPanel HorizontalAlignment="Stretch">
+
+
+								<Image DockPanel.Dock="Left" Source="{Binding ImageURL}" Width="50" Height="50" HorizontalAlignment="Right"/>
+								<TextBlock DockPanel.Dock="Left" Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20,0,0,0" FontSize="20"/>
+
+							<!--<Button  Grid.Column="2" VerticalAlignment="Center" HorizontalContentAlignment="Right"></Button>-->
+								<fa:FontAwesome  Style="{DynamicResource faIcon}" DockPanel.Dock="Right" HorizontalAlignment="Right"  VerticalAlignment="Center" Icon="Close" TextAlignment="Right"  FontSize="20"  >
+									<i:Interaction.Triggers>
+										<i:EventTrigger EventName="MouseDown">
+											<i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.DeleteIngredientCommand }" CommandParameter="{Binding}" />
+										</i:EventTrigger>
+									</i:Interaction.Triggers>
+
+								</fa:FontAwesome>
+
+							</DockPanel></Grid>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+			<Button Grid.Row="2" Visibility="{Binding CookButtonVisibility}" Background="{DynamicResource LogoTextColor}" Command="{Binding CookCommand}"
+					Style="{StaticResource RoundedButton}" Margin="60,10,60,10" Foreground="White" FontSize="30">Cook for me >></Button>
+		</Grid>
+		<Grid Grid.Column="1">
+			<!--RIGHT SIDE-->
+			<Grid.RowDefinitions>
+				<RowDefinition></RowDefinition>
+				<RowDefinition Height="8*"></RowDefinition>
+			</Grid.RowDefinitions>
+
+			<fa:FontAwesome Icon="ArrowLeft" Foreground="DarkGray" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Visibility="{Binding RecipeDetailsVisibility}" Style="{DynamicResource faIcon}" >
+				
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="MouseDown">
+						<i:InvokeCommandAction Command="{Binding BackToRecipeListCommand}" />
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+			</fa:FontAwesome>
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Text="{Binding RightSideTopText}" ></TextBlock>
+
+			
+			<ListBox x:Name="recipesListbox" ItemsSource="{Binding FoundRecipes}" Grid.Row="1" HorizontalContentAlignment="Stretch">
+				<ListBox.ItemTemplate>
+					<DataTemplate DataType="{x:Type models:Recipe}">
+						<Grid>
+						<StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+							<Image Source="{Binding ImageURL}" Width="100" Height="100"/>
+							<TextBlock Text="{Binding Title}" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap"/>
+						</StackPanel>
+							<fa:FontAwesome Icon="Star" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Foreground="Gray"/>
+						</Grid>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="SelectionChanged">
+						<i:InvokeCommandAction Command="{Binding RecipeSelectedCommand}" CommandParameter="{Binding SelectedIndex, ElementName=recipesListbox}" />
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+			</ListBox>
+			<Grid Visibility="{Binding RecipeDetailsVisibility}" Grid.Row="1" Background="{DynamicResource BackgroundColor}" Panel.ZIndex="1000">
+				<!--RIGHT SIDE - RECIPE DETAILS VIEW-->
+				<Frame Source="RecipeDetailsPage.xaml" Name="recipeDetailsFrame" DataContext="{Binding RecipeDetailsViewModel}"/>
+			</Grid>
+		</Grid>
+	</Grid>
+</Page>

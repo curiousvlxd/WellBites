@@ -19,6 +19,7 @@ using Org.OpenAPITools.Client;
 using Org.OpenAPITools.Model;
 using WellBites.Views;
 using Color = System.Drawing.Color;
+using WellBites.MVVM.Views;
 
 namespace WellBites
 {
@@ -81,8 +82,10 @@ namespace WellBites
                 ThemesToggleButton.IsChecked = true;
                 ThemesController.SetTheme(ThemesController.ThemeTypes.Dark); 
             }
-
             FrameMain.Content = _authPage;
+            //FrameMain.Content = new AuthPage();
+            //FrameMain.Content = new CookingPage();
+            FrameMain.Content = new DashboardPage();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
