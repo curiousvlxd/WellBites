@@ -23,6 +23,9 @@ namespace WellBites.Helpers
         [DllImport("User32")]
         internal static extern IntPtr MonitorFromWindow(IntPtr handle, int flags);
 
+        [DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
+        internal static extern bool ShouldSystemUseDarkMode();
+
         static public void win_SourceInitialized(object sender, EventArgs e)
         {
             System.IntPtr handle = (new System.Windows.Interop.WindowInteropHelper(_this)).Handle;
