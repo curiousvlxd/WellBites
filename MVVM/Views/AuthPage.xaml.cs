@@ -27,6 +27,17 @@ namespace WellBites.Views
 
         private void BtnForgotPassword_OnClick(object sender, RoutedEventArgs e)
         {
+           
+        }
+
+        private void BtnSignIn_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnSignUp_OnClick(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new SignUpPage();
         }
     }
 }

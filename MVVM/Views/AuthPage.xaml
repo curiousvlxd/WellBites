@@ -49,12 +49,12 @@
             </Button.Resources>
         </Button>
 
-        <Button VerticalAlignment="Top" HorizontalContentAlignment="Center" x:Name="btn_signin" Width="193" Height="40"  Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="278,410,0,0">
+        <Button Click="BtnSignIn_OnClick" VerticalAlignment="Top" HorizontalContentAlignment="Center" x:Name="btnSignIn" Width="193" Height="40"  Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="278,410,0,0">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{DynamicResource ButtonColor}" FontSize="14" Text="Sign In" Margin="0,0,0,0"/>
             </Grid>
         </Button>
-        <Button VerticalAlignment="Top" x:Name="btn_signin_Copy" Width="193" Height="40"  Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="499,410,0,0">
+        <Button Click="BtnSignUp_OnClick" VerticalAlignment="Top" x:Name="btnSignUp" Width="193" Height="40"  Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="499,410,0,0">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{DynamicResource ButtonColor}" FontSize="14" Text="Sign Up" Margin="0,0,0,0"/>
             </Grid>

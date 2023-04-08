@@ -1,0 +1,47 @@
+﻿<Page x:Class="WellBites.Views.SignUpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WellBites.Views"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="830" d:DesignWidth="970"
+      Title="SignUpPage">
+
+    <Grid Height="830" Width="970">
+        <Border Height="56"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent" Margin="0, 252,0,0" Width="414" >
+            <Grid>
+                <fa:ImageAwesome Icon="User" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="13,0,0,0" />
+                <TextBox x:Name="TbUsername" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1"></TextBox>
+            </Grid>
+        </Border>
+
+        <Border Height="56"  HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent" Margin="0,335,0,0" Width="414" >
+            <Grid>
+                <fa:ImageAwesome Icon="envelope" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="13,0,0,0" />
+                <TextBox x:Name="TbEmail" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="e-mail" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1"></TextBox>
+            </Grid>
+        </Border>
+
+        <Border Height="56" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent"  Margin="0,415,0,0" Width="414" >
+            <Grid Height="50" VerticalAlignment="Top">
+                <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="14,0,0,0" />
+                <PasswordBox materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
+                <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="47,12,52,8"/>
+            </Grid>
+        </Border>
+
+        <Border Height="56" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent"  Margin="0,495,0,0" Width="414" >
+            <Grid Height="50" VerticalAlignment="Top">
+                <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="14,0,0,0" />
+                <PasswordBox materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPasswordRepeat" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
+                <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPasswordRepeat" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="47,12,52,8"/>
+            </Grid>
+        </Border>
+
+
+
+    </Grid>
+</Page>

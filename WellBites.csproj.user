@@ -7,10 +7,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\AuthPage.xaml.cs">
+    <Compile Update="MVVM\Views\AuthPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\SignUpPage.xaml.cs">
+    <Compile Update="MVVM\Views\SignUpPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -39,10 +39,10 @@
     <Page Update="Themes\LightTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\AuthPage.xaml">
+    <Page Update="MVVM\Views\AuthPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\SignUpPage.xaml">
+    <Page Update="MVVM\Views\SignUpPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
