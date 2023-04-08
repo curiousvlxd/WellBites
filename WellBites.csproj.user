@@ -11,7 +11,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\SignUpPage.xaml.cs">
-    <Compile Update="CookingPage.xaml.cs">
+    <!--<Compile Update="CookingPage.xaml.cs">-->
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
