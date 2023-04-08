@@ -111,7 +111,7 @@
                 </Grid>
             </Border>
             <Grid Grid.Row="1">
-                <TextBlock VerticalAlignment="Top" Margin="0,45,0,0" Foreground="{DynamicResource LogoTextColor}" Text="WellBites" FontSize="150" FontFamily="Bookstory"  Width="360" Height="140" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock VerticalAlignment="Top" Margin="0,45,0,0" Foreground="{DynamicResource LogoTextColor}" Text="WellBites" FontSize="150" FontFamily="{DynamicResource Bookstory}"  Width="360" Height="140" HorizontalAlignment="Center"></TextBlock>
 
             </Grid>
         </Grid>
