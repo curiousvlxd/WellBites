@@ -83,6 +83,11 @@ namespace WellBites.MVVM
 				MessageBox.Show(ex.Message);
 			}
 		}
+		private int Denullify(int? n)
+		{
+			if (n == null) return 0;
+			else return (int)n;
+		}
 		public RelayCommand IngredientSelectedCommand { get; set; }
 		public RelayCommand CookCommand { get; set; }
 		public CookingViewModel()
@@ -118,7 +123,7 @@ namespace WellBites.MVVM
 					commaSeparatedIngredients += ",";
 				}
 				List<SearchRecipesByIngredients200ResponseInner> response = apiInstance.SearchRecipesByIngredients(commaSeparatedIngredients, 10, false, 2, false);
-				FoundRecipes = new ObservableCollection<Recipe>(response.Select(rec => new Recipe() { Title = rec.Title }));
+				FoundRecipes = new ObservableCollection<Recipe>(response.Select(rec => new Recipe() { Title = rec.Title, Id=Denullify(rec.Id)}));
 
 
 

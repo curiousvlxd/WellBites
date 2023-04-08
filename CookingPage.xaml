@@ -55,12 +55,12 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
-			<ListBox x:Name="selectedIngredients" Grid.ColumnSpan="2" Grid.Row="1" ItemsSource="{Binding SelectedIngredients}" >
+			<ListBox x:Name="selectedIngredients" Grid.Row="1" ItemsSource="{Binding SelectedIngredients}" >
 				<ListBox.ItemTemplate>
 					<DataTemplate DataType="{x:Type models:Ingredient}">
 						<StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
 							<Image Source="{Binding ImageURL}" Width="50" Height="50"/>
-							<TextBlock Text="{Binding Name}"/>
+							<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="20"/>
 						</StackPanel>
 					</DataTemplate>
 				</ListBox.ItemTemplate>
@@ -69,7 +69,16 @@
 					Style="{StaticResource RoundedButton}" Margin="10,10,10,10" Foreground="White" FontSize="30">Cook for me >></Button>
 		</Grid>
 		<Grid Grid.Column="1"> <!--RIGHT SIDE-->
-			<ListBox x:Name="recipesListbox" ItemsSource="{Binding FoundRecipes}"></ListBox>
+			<ListBox x:Name="recipesListbox" ItemsSource="{Binding FoundRecipes}">
+				<ListBox.ItemTemplate>
+					<DataTemplate DataType="{x:Type models:Recipe}">
+						<StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+							<Image Source="{Binding ImageURL}" Width="100" Height="100"/>
+							<TextBlock Text="{Binding Title}" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="20"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
 		</Grid>
 	</Grid>
 </Page>
