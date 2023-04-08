@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         Title="WellBites" Height="800" Width="1000">
     <Window.Resources>
-        
+
     </Window.Resources>
     <Border Margin="30" x:Name="BorderMain" Background="{DynamicResource BackgroundColor}" CornerRadius="10" BorderThickness="1" BorderBrush="{DynamicResource BorderColor}">
         <Border.Effect>
@@ -25,16 +25,15 @@
             </Grid.RowDefinitions>
             <Border x:Name="BorderTitleBar" BorderThickness="1,1,1,0" BorderBrush="{DynamicResource BorderColor}" MouseDown="OnTitleBarMouseDown" Height="40" VerticalAlignment="Center" CornerRadius="7,7,0,0" Background="{DynamicResource TitleBarColor}" Margin="-1,-1,-1,0">
                 <Grid x:Name="GridTitleBar" Margin="-1,-1,-1,0" Height="40" VerticalAlignment="Top">
-                    <TextBlock VerticalAlignment="Center" Margin="39,0,0,0" Foreground="{DynamicResource TitleBarTextColor}" Text="WellBites" FontSize="14" FontFamily="Segoe UI" Width="73" Height="20" HorizontalAlignment="Left"></TextBlock>
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Width="100" Margin="0,0,146,0">
-                        <Path Data="{DynamicResource Sun}" Height="16" Width="16" Stretch="UniformToFill" Fill="#E6B800" VerticalAlignment="Center"/>
+                        <Path Data="{DynamicResource Sun}" Height="16" Width="16" Stretch="UniformToFill" Fill="{DynamicResource SunIconColor}" VerticalAlignment="Center"/>
                         <ToggleButton x:Name="ThemesToggleButton"
                           IsChecked="False"
                           Click="OnThemesClick"
                           HorizontalAlignment="Right"
                           Style="{DynamicResource MyToggleButton}"
                           Margin="10 0 10 0"/>
-                        <Path Data="{DynamicResource Moon}" Height="16" Width="16" Stretch="Fill" Fill="#B1C2DD" VerticalAlignment="Center"/>
+                        <Path Data="{DynamicResource Moon}" Height="16" Width="16" Stretch="Fill" Fill="{DynamicResource MoonIconColor}" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Margin="0,-0.1,0,0" Orientation="Horizontal" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" Width="150">
                         <StackPanel.Resources>
@@ -112,7 +111,8 @@
                 </Grid>
             </Border>
             <Grid Grid.Row="1">
-              
+                <TextBlock VerticalAlignment="Top" Margin="0,45,0,0" Foreground="{DynamicResource LogoTextColor}" Text="WellBites" FontSize="150" FontFamily="Bookstory"  Width="360" Height="140" HorizontalAlignment="Center"></TextBlock>
+
             </Grid>
         </Grid>
     </Border>

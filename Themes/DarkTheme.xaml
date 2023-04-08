@@ -1,11 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="TitleBarColor" Color="#0B1326"/>
-    <SolidColorBrush x:Key="BackgroundColor" Color="#0C223C"/>
-    <SolidColorBrush x:Key="BorderColor" Color="#0B1326"/>
-    <SolidColorBrush x:Key="TextColor" Color="#B1C2DD"/>
-    <SolidColorBrush x:Key="TitleBarTextColor" Color="#B1C2DD"/>
-    <SolidColorBrush x:Key="TitleBarButtonsHover" Color="#34578A"/>
-    
+    <SolidColorBrush x:Key="TitleBarColor" Color="#191919"/>
+    <SolidColorBrush x:Key="BackgroundColor" Color="#1C1C1C"/>
+    <SolidColorBrush x:Key="BorderColor" Color="#1C1C1C"/>
+    <SolidColorBrush x:Key="TextColor" Color="#F9F9FB"/>
+    <SolidColorBrush x:Key="TitleBarTextColor" Color="#F9F9FB"/>
+    <SolidColorBrush x:Key="TitleBarButtonsHover" Color="#9ACD67"/>
+    <SolidColorBrush x:Key="LogoTextColor" Color="#9ACD67"/>
+    <SolidColorBrush x:Key="MoonIconColor" Color="#F9F9FB"/>
+    <SolidColorBrush x:Key="SunIconColor" Color="#E6B800"/>
+
 </ResourceDictionary>

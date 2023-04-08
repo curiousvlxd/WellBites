@@ -7,5 +7,8 @@
     <SolidColorBrush x:Key="TextColor" Color="#747474"/>
     <SolidColorBrush x:Key="TitleBarTextColor" Color="#747474"/>
     <SolidColorBrush x:Key="TitleBarButtonsHover" Color="#D4D4D4"/>
+    <SolidColorBrush x:Key="LogoTextColor" Color="#719C2D"/>
+    <SolidColorBrush x:Key="MoonIconColor" Color="#B1C2DD"/>
+    <SolidColorBrush x:Key="SunIconColor" Color="#E6B800"/>
 
 </ResourceDictionary>   

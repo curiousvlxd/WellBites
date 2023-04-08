@@ -5,11 +5,15 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/LightTheme.xaml"/>
                 <ResourceDictionary Source="/Styles/Icons.xaml"/>
                 <ResourceDictionary Source="/Styles/MyToggleButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <FontFamily x:Key="Bookstory">./Fonts/Bookstory.ttf#Bookstory</FontFamily>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

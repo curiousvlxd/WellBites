@@ -68,11 +68,11 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Ellipse"
                                     Property="Fill"
-                                    Value="#B1C2DD"/>
+                                    Value="#1C1C1C"/>
                             <Setter TargetName="Ellipse"
                                    Property="Stroke"
-                                   Value="#34578A"/>
-                            <Setter Property="Background" Value="#34578A"/>
+                                   Value="#F9F9FB"/>
+                            <Setter Property="Background" Value="#F9F9FB"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
