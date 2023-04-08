@@ -3,10 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WellBites"
-      mc:Ignorable="d" 
+      xmlns:local="clr-namespace:WellBites" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+	  mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+	  xmlns:viewmodel="clr-namespace:WellBites.MVVM"
       Title="CookingPage">
+	<Page.DataContext>
+		<viewmodel:CookingViewModel/>
+	</Page.DataContext>
 
 	<Grid>
 		<Grid.ColumnDefinitions>
@@ -24,12 +28,16 @@
 				<ColumnDefinition Width="67*"></ColumnDefinition>
 				<ColumnDefinition Width="13*"></ColumnDefinition>
 			</Grid.ColumnDefinitions>
-			<TextBox Margin="10,10,10,10"></TextBox>
+			<TextBox Margin="10,10,10,10" Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="TextChanged">
+						<i:InvokeCommandAction Command="{Binding SearchChangedCommand}"/>
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+
+			</TextBox>
 			<Button Grid.Row="0" Grid.Column="1" Style="{DynamicResource RoundedButton}" Padding="10" />
-			<ListBox Grid.ColumnSpan="2" Grid.Row="1" Padding="10">
-				<ListBoxItem>apple</ListBoxItem>
-				<ListBoxItem>cheese</ListBoxItem>
-				<ListBoxItem>pasta</ListBoxItem>
+			<ListBox Grid.ColumnSpan="2" Grid.Row="1" Padding="10" ItemsSource="{Binding SuggestedIngredients}">
 			</ListBox>
 		</Grid>
 	</Grid>

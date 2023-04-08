@@ -8,6 +8,12 @@ namespace WellBites.Models
 {
 	internal class Ingredient
 	{
+		public string Image { get; set; }
+		public string Name { get; set; }
 
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 }
