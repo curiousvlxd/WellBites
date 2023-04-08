@@ -18,7 +18,8 @@
             <Border Height="56"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent" Margin="0,11,0,0" Width="414" >
                 <Grid>
                     <fa:ImageAwesome Icon="User" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="13,0,0,0" />
-                    <TextBox x:Name="TbUsername" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1"></TextBox>
+                    <TextBox x:Name="TbUsername" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1">
+                    </TextBox>
                 </Grid>
             </Border>
 
@@ -33,7 +34,32 @@
                 <Grid Height="50" VerticalAlignment="Top">
                     <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="14,0,0,0" />
                     <PasswordBox materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
-                    <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="47,12,52,8"/>
+                    <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="48,10.6,51,10"/>
+                    <Grid Background="Transparent" Visibility="Visible" MouseDown="BtnHideunhide_OnMouseDown" Height="15" Width="22" Name="BtnHidePass" Margin="371,18,15,17">
+                        <fa:ImageAwesome Icon="Eye" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Opacity" Value="0.6" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                    </Grid>
+
+                    <Grid Visibility="Collapsed" MouseDown="BtnHideunhide_OnMouseDown" Width="22" Name="BtnUnHidePass" Margin="371,17,15,16">
+                        <fa:ImageAwesome Icon="EyeSlash" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="22" />
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Opacity" Value="0.6" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                    </Grid>
                 </Grid>
             </Border>
 
@@ -41,7 +67,32 @@
                 <Grid Height="50" VerticalAlignment="Top">
                     <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="14,0,0,0" />
                     <PasswordBox materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPasswordRepeat" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Repeat password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
-                    <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPasswordRepeat" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Repeat password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="47,12,52,8"/>
+                    <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPasswordRepeat" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Repeat password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="48,10.6,51,10"/>
+                    <Grid Background="Transparent" Visibility="Visible" MouseDown="BtnHideunhideInRepeatPass_OnMouseDown" Height="15" Width="22" Name="BtnHideRepeatPass" Margin="371,18,15,17">
+                        <fa:ImageAwesome Icon="Eye" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Opacity" Value="0.6" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                    </Grid>
+
+                    <Grid Visibility="Collapsed" MouseDown="BtnHideunhideInRepeatPass_OnMouseDown" Width="22" Name="BtnUnHideRepeatPass" Margin="371,17,15,16">
+                        <fa:ImageAwesome Icon="EyeSlash" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="22" />
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Opacity" Value="0.6" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                    </Grid>
                 </Grid>
             </Border>
         </Grid>

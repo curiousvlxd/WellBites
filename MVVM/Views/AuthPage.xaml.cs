@@ -20,6 +20,7 @@ namespace WellBites.Views
     /// </summary>
     public partial class AuthPage : Page
     {
+        private bool isHidden = true;
         public AuthPage()
         {
             InitializeComponent();
@@ -38,6 +39,28 @@ namespace WellBites.Views
         private void BtnSignUp_OnClick(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new SignUpPage();
+        }
+
+        private void BtnHideunhide_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (isHidden)
+            {
+                TbPassword.Text = PbPassword.Password;
+                PbPassword.Visibility = Visibility.Collapsed;
+                TbPassword.Visibility = Visibility.Visible;
+                isHidden = false;
+                BtnUnHidePass.Visibility = Visibility.Visible;
+                BtnHidePass.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                PbPassword.Password = TbPassword.Text;
+                TbPassword.Visibility = Visibility.Collapsed;
+                PbPassword.Visibility = Visibility.Visible;
+                isHidden = true;
+                BtnUnHidePass.Visibility = Visibility.Collapsed;
+                BtnHidePass.Visibility = Visibility.Visible;
+            }
         }
     }
 }

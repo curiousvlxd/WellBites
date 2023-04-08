@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WellBites.MVVM.ViewModels;
 
 namespace WellBites.Views
 {
@@ -19,19 +20,66 @@ namespace WellBites.Views
     /// Interaction logic for SignUpPage.xaml
     /// </summary>
     public partial class SignUpPage : Page
-    {
+    {   
+
+        private UserViewModel _userViewModel;
+        private bool isHidden = true;
+
         public SignUpPage()
         {
             InitializeComponent();
+            _userViewModel = new UserViewModel();
         }
 
         private void BtnGoBack_OnClick(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new AuthPage();
+            NavigationService.GoBack();
         }
 
         private void BtnGoNext_OnClick_OnClick(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(PbPassword.Password);
+            MessageBox.Show(PbPasswordRepeat.Password);
+        }
+
+        public bool isFormValid()
+        {
+
+            
+
+            return true;
+        }
+
+        private void BtnHideunhide_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            HideUnhidePassword(PbPassword, TbPassword, BtnHidePass, BtnUnHidePass);
+        }
+
+        private void BtnHideunhideInRepeatPass_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            HideUnhidePassword(PbPasswordRepeat, TbPasswordRepeat, BtnHideRepeatPass, BtnUnHideRepeatPass);
+        }
+
+            private void HideUnhidePassword(PasswordBox pbPasswordBox, TextBox tbTextBox, Grid btnButtonHide, Grid btnButtonUnhide)
+            {
+            if (isHidden)
+            {
+                tbTextBox.Text = pbPasswordBox.Password;
+                pbPasswordBox.Visibility = Visibility.Collapsed;
+                tbTextBox.Visibility = Visibility.Visible;
+                isHidden = false;
+                btnButtonUnhide.Visibility = Visibility.Visible;
+                btnButtonHide.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                pbPasswordBox.Password = tbTextBox.Text;
+                tbTextBox.Visibility = Visibility.Collapsed;
+                pbPasswordBox.Visibility = Visibility.Visible;
+                isHidden = true;
+                btnButtonUnhide.Visibility = Visibility.Collapsed;
+                btnButtonHide.Visibility = Visibility.Visible;
+            }
         }
     }
 }
