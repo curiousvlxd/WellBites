@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using WellBites.Core;
 using WellBites.Models;
+using WellBites.MVVM.ViewModels;
 
 namespace WellBites.MVVM
 {
@@ -17,6 +18,16 @@ namespace WellBites.MVVM
 		ObservableCollection<Ingredient> suggestedIngredients;
 		ObservableCollection<Recipe> foundRecipes;
 
+		string rightSideTopText = "Recipes";
+		public string RightSideTopText
+		{
+			get { return rightSideTopText; }
+			set
+			{
+				rightSideTopText = value;
+				OnPropertyChanged();
+			}
+		}
 		public ObservableCollection<Ingredient> SuggestedIngredients { get
 			{
 
@@ -49,6 +60,20 @@ namespace WellBites.MVVM
 			{
 				if (SearchQuery.Length > 0) return Visibility.Visible;
 				return Visibility.Hidden;
+			}
+		}
+		Visibility recipeDetailsVisibility;
+		public Visibility RecipeDetailsVisibility
+		{
+			get
+			{
+				return recipeDetailsVisibility;
+
+			}
+			set
+			{
+				recipeDetailsVisibility = value;
+				OnPropertyChanged();
 			}
 		}
 		string searchQuery;
@@ -90,8 +115,11 @@ namespace WellBites.MVVM
 		}
 		public RelayCommand IngredientSelectedCommand { get; set; }
 		public RelayCommand CookCommand { get; set; }
+		public RelayCommand RecipeSelectedCommand { get; set; }
+		public RelayCommand BackToRecipeListCommand { get; set; }
 		public CookingViewModel()
 		{
+			RecipeDetailsVisibility = Visibility.Hidden;
 			SearchQuery = "";
 			SelectedIngredients = new ObservableCollection<Ingredient>();
 			SearchChangedCommand = new RelayCommand((o) =>
@@ -123,13 +151,59 @@ namespace WellBites.MVVM
 					commaSeparatedIngredients += ",";
 				}
 				List<SearchRecipesByIngredients200ResponseInner> response = apiInstance.SearchRecipesByIngredients(commaSeparatedIngredients, 10, false, 2, false);
-				FoundRecipes = new ObservableCollection<Recipe>(response.Select(rec => new Recipe() { Title = rec.Title, Id=Denullify(rec.Id)}));
+				FoundRecipes = new ObservableCollection<Recipe>(response.Select(
+					rec => new Recipe() {
+						Title = rec.Title,
+						Id=Denullify(rec.Id),
+						
+					}));
 
 
 
 			});
+
+			RecipeSelectedCommand = new RelayCommand((selectedIndex) =>
+			{
+				if ((int)selectedIndex < 0) return;
+				RecipeDetailsVisibility = Visibility.Visible;
+				Recipe selected = FoundRecipes[(int)selectedIndex];
+				SelectedRecipe = selected;
+				RightSideTopText = selected.Title;
+				selected.PopulateDetails();
+				RecipeDetailsViewModel.ViewedRecipe = selected;
+			});
+
+			BackToRecipeListCommand = new RelayCommand((o) =>
+			{
+				RecipeDetailsVisibility = Visibility.Hidden;
+				RightSideTopText = "Recipes";
+			});
+			RecipeDetailsViewModel = new RecipeDetailsViewModel();
 		}
 
-		
+		Recipe selectedRecipe;
+		public Recipe SelectedRecipe { 
+			get
+			{
+				return selectedRecipe;
+			}
+			set
+			{
+				selectedRecipe = value;
+				OnPropertyChanged();
+			}
+		}
+		RecipeDetailsViewModel recipeDetailsViewModel;
+		public RecipeDetailsViewModel RecipeDetailsViewModel { 
+			get
+			{
+				return recipeDetailsViewModel;
+			}
+			set
+			{
+				recipeDetailsViewModel = value;
+				OnPropertyChanged();
+			}
+		}
 	}
 }

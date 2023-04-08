@@ -12,28 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WellBites.Models;
-using WellBites.MVVM;
-using WellBites.MVVM.Views;
+using WellBites.MVVM.ViewModels;
 
-namespace WellBites
+namespace WellBites.MVVM.Views
 {
 	/// <summary>
-	/// Interaction logic for CookingPage.xaml
+	/// Interaction logic for RecipeDetailsPage.xaml
 	/// </summary>
-	public partial class CookingPage : Page
+	public partial class RecipeDetailsPage : Page
 	{
-		public CookingPage()
+		public RecipeDetailsPage()
 		{
 			InitializeComponent();
-			var page  = new RecipeDetailsPage();
-			var vm = ((CookingViewModel)this.DataContext).RecipeDetailsViewModel;
-			vm.page = page;
-			page.DataContext = vm;
-
-			recipeDetailsFrame.Content = page;
-
-
+			
 		}
 	}
 }
