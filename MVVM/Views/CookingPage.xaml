@@ -92,7 +92,7 @@
 								<fa:FontAwesome DockPanel.Dock="Right" HorizontalAlignment="Right"  VerticalAlignment="Center" Icon="Close" TextAlignment="Right"  FontSize="20"  >
 									<i:Interaction.Triggers>
 										<i:EventTrigger EventName="MouseDown">
-											<i:InvokeCommandAction Command="{Binding DeleteIngredientCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.DeleteIngredientCommand }" CommandParameter="{Binding}" />
+											<i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.DeleteIngredientCommand }" CommandParameter="{Binding}" />
 										</i:EventTrigger>
 									</i:Interaction.Triggers>
 
@@ -115,7 +115,7 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
-			<Button Grid.Row="2"  Background="{DynamicResource LogoTextColor}" Command="{Binding CookCommand}"
+			<Button Grid.Row="2" Visibility="{Binding CookButtonVisibility}" Background="{DynamicResource LogoTextColor}" Command="{Binding CookCommand}"
 					Style="{StaticResource RoundedButton}" Margin="60,10,60,10" Foreground="White" FontSize="30">Cook for me >></Button>
 		</Grid>
 		<Grid Grid.Column="1">

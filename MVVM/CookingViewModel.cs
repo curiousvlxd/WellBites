@@ -63,6 +63,7 @@ namespace WellBites.MVVM
 			}
 		}
 		Visibility recipeDetailsVisibility;
+		Visibility cookButtonVisibility;
 		public Visibility RecipeDetailsVisibility
 		{
 			get
@@ -75,6 +76,15 @@ namespace WellBites.MVVM
 				recipeDetailsVisibility = value;
 				OnPropertyChanged();
 			}
+		}
+		public Visibility CookButtonVisibility
+		{
+			get
+			{
+				return SelectedIngredients.Count>0?Visibility.Visible:Visibility.Hidden;
+
+			}
+
 		}
 		string searchQuery;
 		public string SearchQuery
@@ -136,7 +146,8 @@ namespace WellBites.MVVM
 				SearchQuery = "";
 				OnPropertyChanged(nameof(AutocompletePopupVisibility));
 				SuggestedIngredients.Clear();
-				
+				OnPropertyChanged(nameof(CookButtonVisibility));
+
 
 			});
 			CookCommand = new RelayCommand((o) =>
@@ -183,6 +194,7 @@ namespace WellBites.MVVM
 			DeleteIngredientCommand = new RelayCommand((ingredient) =>
 			{
 				SelectedIngredients.Remove((Ingredient)ingredient);
+				OnPropertyChanged(nameof(CookButtonVisibility));
 			});
 
 			RecipeDetailsViewModel = new RecipeDetailsViewModel();
