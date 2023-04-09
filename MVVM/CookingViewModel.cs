@@ -41,6 +41,8 @@ namespace WellBites.MVVM
 			}
 			}
 
+
+
 		public ObservableCollection<Recipe> FoundRecipes
 		{
 			get
@@ -134,6 +136,7 @@ namespace WellBites.MVVM
 		public RelayCommand RecipeSelectedCommand { get; set; }
 		public RelayCommand BackToRecipeListCommand { get; set; }
 		public RelayCommand DeleteIngredientCommand { get; set; }
+		public RelayCommand ToggleFavoriteRecipeCommand { get; set; }
 		public CookingViewModel()
 		{
 			RecipeDetailsVisibility = Visibility.Hidden;
@@ -204,6 +207,11 @@ namespace WellBites.MVVM
 			{
 				SelectedIngredients.Remove((Ingredient)ingredient);
 				OnPropertyChanged(nameof(CookButtonVisibility));
+			});
+
+			ToggleFavoriteRecipeCommand = new RelayCommand((recipe) =>
+			{
+				((Recipe)recipe).IsFavorite = !((Recipe)recipe).IsFavorite;
 			});
 
 			RecipeDetailsViewModel = new RecipeDetailsViewModel();

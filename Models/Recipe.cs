@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WellBites.Core;
 using WellBites.MVVM.Views;
 
 namespace WellBites.Models
 {
-	internal class Recipe
+	internal class Recipe:ObservableObject
 	{
 		public int Id { get; set; }
 		public string Title { get; set; }
@@ -20,7 +21,17 @@ namespace WellBites.Models
 		public List<string> Cuisines { get; set; }
 		public string Instructions { get; set; }
 		public int? CookingTimeInMinutes { get; set; }
-		public bool IsFavorite { get; set; }
+
+		bool isFavorite;
+		public bool IsFavorite
+		{
+			get { return isFavorite; }
+			set
+			{
+				isFavorite = value;
+				OnPropertyChanged();
+			}
+		}
 		public string ImageURL
 		{
 			get
