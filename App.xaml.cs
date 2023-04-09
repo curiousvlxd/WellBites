@@ -47,9 +47,9 @@ namespace WellBites
                 var userManagerService = services.GetRequiredService<UserManagerService>();
             //dbContext.Users.RemoveRange(dbContext.Users);
             //dbContext.SaveChanges();
-            //AuthPage authPage = new AuthPage(new UserViewModel(userManagerService));
-            DashboardPage page = new DashboardPage(new UserViewModel(userManagerService));
-               new MainWindow(page, configuration.GetSection("api-keys")["x-api-key"]).Show();
+            AuthPage authPage = new AuthPage(new UserViewModel(userManagerService));
+            //DashboardPage page = new DashboardPage(new UserViewModel(userManagerService));
+               new MainWindow(authPage, configuration.GetSection("api-keys")["x-api-key"]).Show();
         }
     }
 }
