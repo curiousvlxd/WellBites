@@ -46,7 +46,7 @@ namespace WellBites.Views
 
         private void BtnSignUp_OnClick(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new SignUpPage((UserViewModel)this.DataContext);
+            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new SignUpPage(_userViewModel);
         }
 
         private void BtnHideunhide_OnMouseDown(object sender, MouseButtonEventArgs e)

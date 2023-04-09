@@ -43,19 +43,19 @@ namespace WellBites.Views
 
         private void BtnGoNext_OnClick_OnClick(object sender, RoutedEventArgs e)
         {
-            //if (!IsFormValid()) return;
+            if (!IsFormValid()) return;
 
-            //DateTime selectedDate = dpDateOfBirth.SelectedDate.Value;
-            
-            //_userViewModel.User.Username = TbUsername.Text;
-            //_userViewModel.User.Email = TbEmail.Text;
-            //_userViewModel.User.CreatePasswordHash(TbPassword.Text);
-            //_userViewModel.User.DateOfBirth = selectedDate;
-            //_userViewModel.User.Height = int.Parse(tbHeight.Text);
-            //_userViewModel.User.Weight = int.Parse(tbWeight.Text);
-            //_userViewModel.User.Activity = (Activity)cbActivity.SelectedItem;
-            //_userViewModel.User.Sex = (Sex)cbSex.SelectedItem;
-            //_userViewModel.UserManagerService.AddUser(_userViewModel.User);
+            DateTime selectedDate = dpDateOfBirth.SelectedDate.Value;
+
+            _userViewModel.User.Username = TbUsername.Text;
+            _userViewModel.User.Email = TbEmail.Text;
+            _userViewModel.User.CreatePasswordHash(TbPassword.Text);
+            _userViewModel.User.DateOfBirth = selectedDate;
+            _userViewModel.User.Height = int.Parse(tbHeight.Text);
+            _userViewModel.User.Weight = int.Parse(tbWeight.Text);
+            _userViewModel.User.Activity = (Activity)cbActivity.SelectedItem;
+            _userViewModel.User.Sex = (Sex)cbSex.SelectedItem;
+            _userViewModel.UserManagerService.AddUser(_userViewModel.User);
             ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new DashboardPage(_userViewModel);
         }
 

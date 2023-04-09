@@ -16,7 +16,7 @@
         <Border Height="56"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent" Margin="0, 252,0,0" Width="414" >
             <Grid>
                 <fa:ImageAwesome Icon="User" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="13,0,0,0" />
-                <TextBox x:Name="TbEmail" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1"></TextBox>
+                <TextBox x:Name="TbUsername" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1"></TextBox>
             </Grid>
         </Border>
 
