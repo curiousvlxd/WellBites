@@ -30,7 +30,11 @@ namespace WellBites.MVVM.Views
 
 		private void findOption_MouseDown(object sender, MouseButtonEventArgs e)
 		{
+
 			//frame.Content = new CookingPage();
+
+			frame.Content = new CookingPage();
+			frame.DataContext = new CookingViewModel();
 		}
 
 		private void favoritesOption_MouseDown(object sender, MouseButtonEventArgs e)

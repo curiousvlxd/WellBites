@@ -40,13 +40,13 @@ namespace WellBites.Views
         {
             if (_userViewModel.UserManagerService.AuthenticateUser(TbUsername.Text, PbPassword.Password))
             {
-                ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new DashboardPage(_userViewModel);
+                ((MainWindow)Application.Current.MainWindow).frame.Content = new DashboardPage(_userViewModel);
             }
         }
 
         private void BtnSignUp_OnClick(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new SignUpPage(_userViewModel);
+            ((MainWindow)Application.Current.MainWindow).frame.Content = new SignUpPage(_userViewModel);
         }
 
         private void BtnHideunhide_OnMouseDown(object sender, MouseButtonEventArgs e)
