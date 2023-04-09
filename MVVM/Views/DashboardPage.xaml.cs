@@ -27,5 +27,16 @@ namespace WellBites.MVVM.Views
 			InitializeComponent();
 			_userViewModel = userViewModel;
 		}
+
+		private void findOption_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			frame.Content = new CookingPage();
+		}
+
+		private void favoritesOption_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			frame.Content = new FavoritesPage();
+
+		}
 	}
 }
