@@ -37,7 +37,7 @@
 					</TextBlock.Style>
 				</TextBlock>
 				<TextBlock Foreground="{DynamicResource TextColor}" FontWeight="Bold" FontSize="20">Instructions</TextBlock>
-            <TextBlock Foreground="{DynamicResource TextColor}" Text="{Binding ViewedRecipe.Instructions}" TextWrapping="Wrap"></TextBlock>
+            <TextBlock FontSize="15" Foreground="{DynamicResource TextColor}" Text="{Binding ViewedRecipe.Instructions}" TextWrapping="Wrap"></TextBlock>
 				<StackPanel Orientation="Horizontal" Margin="10">
 					<StackPanel.Style>
 						<Style TargetType="StackPanel">
@@ -48,7 +48,7 @@
 							</Style.Triggers>
 						</Style>
 					</StackPanel.Style>
-					<fa:ImageAwesome Icon="ClockOutline" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+					<fa:ImageAwesome  Foreground="{DynamicResource TextColor}" Icon="ClockOutline" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
 					<TextBlock  Foreground="{DynamicResource TextColor}" Margin="10,0,0,0"  VerticalAlignment="Center">Cooking time: </TextBlock>
 					<TextBlock  Foreground="{DynamicResource TextColor}" Margin="3,0,0,0" VerticalAlignment="Center"  Text="{Binding ViewedRecipe.CookingTimeInMinutes}"/>
 					<TextBlock  Foreground="{DynamicResource TextColor}" Margin="3,0,0,0"  VerticalAlignment="Center" Text="min"/>
@@ -68,15 +68,15 @@
 						<RowDefinition/>
 
 					</Grid.RowDefinitions>
-					<TextBlock Foreground="{DynamicResource TextColor}">Calories:</TextBlock>
-					<TextBlock Foreground="{DynamicResource TextColor}" Grid.Row="1">Fat:</TextBlock>
-					<TextBlock Foreground="{DynamicResource TextColor}" Grid.Row="2">Carbohydrates:</TextBlock>
-					<TextBlock Foreground="{DynamicResource TextColor}" Grid.Row="4">Protein:</TextBlock>
+					<TextBlock FontSize="15"  Foreground="{DynamicResource TextColor}">Calories:</TextBlock>
+					<TextBlock FontSize="15"  Foreground="{DynamicResource TextColor}" Grid.Row="1">Fat:</TextBlock>
+					<TextBlock FontSize="15"  Foreground="{DynamicResource TextColor}" Grid.Row="2">Carbohydrates:</TextBlock>
+					<TextBlock FontSize="15"  Foreground="{DynamicResource TextColor}" Grid.Row="4">Protein:</TextBlock>
 
-					<TextBlock Foreground="{DynamicResource TextColor}" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Calories}"></TextBlock>
-					<TextBlock Foreground="{DynamicResource TextColor}" Grid.Row="1" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Fat}"></TextBlock>
-					<TextBlock Foreground="{DynamicResource TextColor}" Grid.Row="2" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Carbs}"></TextBlock>
-					<TextBlock Foreground="{DynamicResource TextColor}" Grid.Row="4" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Protein}"></TextBlock>
+					<TextBlock FontSize="15"  Foreground="{DynamicResource TextColor}" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Calories}"></TextBlock>
+					<TextBlock FontSize="15"  Foreground="{DynamicResource TextColor}" Grid.Row="1" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Fat}"></TextBlock>
+					<TextBlock FontSize="15"  Foreground="{DynamicResource TextColor}" Grid.Row="2" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Carbs}"></TextBlock>
+					<TextBlock FontSize="15"  Foreground="{DynamicResource TextColor}" Grid.Row="4" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Protein}"></TextBlock>
 
 				</Grid>
 				
