@@ -28,8 +28,19 @@ namespace WellBites.MVVM.Views
 			var vm = ((FavoritesViewModel)this.DataContext).RecipeDetailsViewModel;
 			vm.page = page;
 			page.DataContext = vm;
-
 			recipeDetailsFrame.Content = page;
+		}
+		private void FontAwesome_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			e.Handled = true;
+			var vm = ((FavoritesViewModel)this.DataContext);
+			vm.BackToFavListCommand.Execute((sender as FrameworkElement).DataContext);
+			
+		}
+
+		private void recipesListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			((ListBox)sender).SelectedIndex = -1;
 		}
 	}
 }
