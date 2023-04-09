@@ -147,17 +147,20 @@ namespace WellBites.MVVM
 		private void GetRecAutocomplete()
 		{
 			var apiInstance = new RecipesApi();
-			if (recSearchQuery.Length <= 0) return;
+			if (recSearchQuery.Length <= 0)
+			{
+				FoundRecipes.Clear();
+			}
 			try
 			{
 				// Search Recipes by Ingredients
 				Task.Run(() => {
 					List<AutocompleteRecipeSearch200ResponseInner> response = apiInstance.AutocompleteRecipeSearch(RecSearchQuery,10);
 					IEnumerable<Recipe> result;
-					result = response.Select(r => new Recipe() { Id=Denullify(r.Id), Title = r.Title, Image = r.ImageType, MissingIngredients = { } }); //map to our own model type
+					result = response.Select(r => new Recipe() { Id=Denullify(r.Id), Title = char.ToUpper(r.Title.First()) + r.Title.Substring(1), Image = r.ImageType, MissingIngredients = { } }); //map to our own model type
 					foreach (Recipe recipe in result)
 					{
-						recipe.PopulateDetails();
+						recipe.PopulateLight();
 					}
 					
 					FoundRecipes = new ObservableCollection<Recipe>(result);
@@ -197,6 +200,7 @@ namespace WellBites.MVVM
 			RecSearchChangedCommand = new RelayCommand((o) =>
 			{
 				GetRecAutocomplete();
+				
 				//OnPropertyChanged(nameof(AutocompleteRecPopupVisibility));
 			});
 			IngredientSelectedCommand = new RelayCommand((selectedIndex) =>
@@ -247,6 +251,7 @@ namespace WellBites.MVVM
 				RightSideTopText = selected.Title;
 				selected.PopulateDetails();
 				RecipeDetailsViewModel.ViewedRecipe = selected;
+
 			});
 
 			BackToRecipeListCommand = new RelayCommand((o) =>

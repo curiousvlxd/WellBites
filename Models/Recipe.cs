@@ -15,7 +15,19 @@ namespace WellBites.Models
 	internal class Recipe : ObservableObject
 	{
 		public int Id { get; set; }
-		public string Title { get; set; }
+		string title;
+		public string Title
+		{
+			get
+			{
+				return title;
+			}
+			set
+			{
+				title = value;
+				OnPropertyChanged();
+			}
+		}
 		public string Image { get; set; }
 
 		public bool? IsCheap { get; set; }
@@ -31,7 +43,7 @@ namespace WellBites.Models
 			set
 			{
 				isFavorite = value;
-				OnPropertyChanged();
+				//OnPropertyChanged();
 			}
 		}
 		public string ImageURL
@@ -100,6 +112,13 @@ namespace WellBites.Models
 		public GetRecipeNutritionWidgetByID200Response Nutrition { get; set; }
 		public void PopulateDetails()
 		{
+			PopulateLight();
+			RecipesApi apiInstance = new RecipesApi();
+			Nutrition = apiInstance.GetRecipeNutritionWidgetByID(Id);
+
+		}
+		public void PopulateLight()
+		{
 			RecipesApi apiInstance = new RecipesApi();
 			GetRecipeInformation200Response response = apiInstance.GetRecipeInformation(Id, true);
 
@@ -120,12 +139,8 @@ namespace WellBites.Models
 				Instructions = Instructions.Replace("<li>", "- ");
 				Instructions = Instructions.Replace("</li>", "\n");
 
-				Instructions = Regex.Replace(Instructions, "<.+>", "");
-				Instructions = Regex.Replace(Instructions, "</.+>", "");
+				Instructions = Regex.Replace(Instructions, "<.*?>", String.Empty);
 			}
-
-		Nutrition = apiInstance.GetRecipeNutritionWidgetByID(Id);
-
 		}
 	}
 }
