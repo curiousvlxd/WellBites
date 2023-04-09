@@ -26,10 +26,10 @@
 					<TextBlock.Style>
 						<Style TargetType="TextBlock">
 							<Style.Triggers>
-								<DataTrigger Binding="{Binding HasMissingIngredients}" Value="{StaticResource TrueValue}">
+								<DataTrigger Binding="{Binding ViewedRecipe.HasMissingIngredients}" Value="{StaticResource TrueValue}">
 									<Setter Property="Foreground" Value="Red"/>
 								</DataTrigger>
-								<DataTrigger Binding="{Binding HasMissingIngredients}" Value="{StaticResource FalseValue}">
+								<DataTrigger Binding="{Binding ViewedRecipe.HasMissingIngredients}" Value="{StaticResource FalseValue}">
 									<Setter Property="Foreground" Value="{DynamicResource LogoTextColor}"/>
 								</DataTrigger>
 							</Style.Triggers>
