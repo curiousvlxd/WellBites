@@ -28,11 +28,11 @@ namespace WellBites
     /// </summary>
     public partial class MainWindow : Window
     {   
-        private AuthPage _authPage;
-        public MainWindow(AuthPage authPage, string apiKey)
+        private Page mainPage;
+        public MainWindow(Page mainPage, string apiKey)
         {
             InitializeComponent();
-            _authPage = authPage;
+			this.mainPage = mainPage;
             WindowHelper._this = this;
             this.SourceInitialized += new EventHandler(WindowHelper.win_SourceInitialized);
 			Configuration.ApiKey.Add("x-api-key", $"{apiKey}");
@@ -82,7 +82,7 @@ namespace WellBites
                 ThemesToggleButton.IsChecked = true;
                 ThemesController.SetTheme(ThemesController.ThemeTypes.Dark); 
             }
-            FrameMain.Content = _authPage;
+            FrameMain.Content = mainPage;
             //FrameMain.Content = new AuthPage();
             //FrameMain.Content = new CookingPage();
             //FrameMain.Content = new DashboardPage();
