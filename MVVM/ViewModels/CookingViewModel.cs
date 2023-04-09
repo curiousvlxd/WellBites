@@ -184,7 +184,7 @@ namespace WellBites.MVVM.ViewModels
                         rec => new Recipe()
                         {
                             Title = rec.Title,
-                            ApiId = Denullify(rec.Id),
+                            Id = Denullify(rec.Id),
                             MissingIngredients = rec.MissedIngredients
                         })); ; ;
                 });
