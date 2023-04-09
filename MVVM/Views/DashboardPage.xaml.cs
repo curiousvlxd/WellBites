@@ -36,6 +36,7 @@ namespace WellBites.MVVM.Views
 		private void favoritesOption_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			frame.Content = new FavoritesPage();
+
 		}
 	}
 }
