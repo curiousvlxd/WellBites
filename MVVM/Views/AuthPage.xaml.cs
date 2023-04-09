@@ -33,7 +33,7 @@ namespace WellBites.Views
 
         private void BtnForgotPassword_OnClick(object sender, RoutedEventArgs e)
         {
-           
+           //Will be implemented in the future
         }
 
         private void BtnSignIn_OnClick(object sender, RoutedEventArgs e)

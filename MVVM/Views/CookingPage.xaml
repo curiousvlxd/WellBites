@@ -9,11 +9,11 @@
 	  mc:Ignorable="d" 
 	  xmlns:s="clr-namespace:System;assembly=mscorlib"
       d:DesignHeight="450" d:DesignWidth="800"
-	  xmlns:viewmodel="clr-namespace:WellBites.MVVM"
+	  xmlns:viewModels="clr-namespace:WellBites.MVVM.ViewModels"
 	  x:Name="page"
       Title="CookingPage">
 	<Page.DataContext>
-		<viewmodel:CookingViewModel/>
+		<viewModels:CookingViewModel/>
 	</Page.DataContext>
 
 	<Page.Resources>
@@ -111,7 +111,6 @@
 			</ListBox>
             <Button Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Height="60" Grid.Row="2" Visibility="{Binding CookButtonVisibility}" Background="{DynamicResource TitleBarColor}" Command="{Binding CookCommand}"
                     Style="{StaticResource RoundedButton}" Margin="90,0,90,0" Foreground="{DynamicResource ListBoxText}" VerticalAlignment="Center">
-
                 <TextBlock FontSize="20" FontWeight="ExtraBold" Margin="0,0,0,0">Cook for me >></TextBlock>
             </Button>
         </Grid>

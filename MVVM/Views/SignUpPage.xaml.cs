@@ -29,6 +29,12 @@ namespace WellBites.Views
         public UserViewModel _userViewModel;
         private bool isHiddenPass = true;
         private bool isHiddenPassRepeat = true;
+        private readonly Regex dateRegex = new Regex(@"^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$");
+        private readonly Regex heightRegex = new Regex(@"^[1-9][0-9]{2}$");
+        private readonly Regex weightRegex = new Regex(@"^[1-9][0-9]{1,2}$");
+        private readonly Regex usernameRegex = new Regex(@"^[a-zA-Z0-9]{3,20}$");
+        private readonly Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        private readonly Regex passwordRegex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$");
 
         public SignUpPage(UserViewModel userViewModel)
         {
@@ -138,10 +144,39 @@ namespace WellBites.Views
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void NumberValidationDatePicker(object sender, TextCompositionEventArgs e)
+        private void WeightValidation(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9/]+");
+            ValueValidation(weightRegex, e);
+        }
+
+        private void ValueValidation(Regex regex, TextCompositionEventArgs e)
+        {
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void DateValidation(object sender, TextCompositionEventArgs e)
+        {
+            ValueValidation(dateRegex, e);
+        }
+
+        private void PasswordValidation(object sender, TextCompositionEventArgs e)
+        {
+            ValueValidation(passwordRegex, e);
+        }
+
+        private void EmailValidation(object sender, TextCompositionEventArgs e)
+        {
+            ValueValidation(emailRegex, e);
+        }
+
+        private void UsernameValidation(object sender, TextCompositionEventArgs e)
+        {
+            ValueValidation(usernameRegex, e);
+        }
+
+        private void HeightValidation(object sender, TextCompositionEventArgs e)
+        {
+            ValueValidation(heightRegex, e);
         }
     }
 }

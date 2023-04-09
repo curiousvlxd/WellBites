@@ -65,7 +65,6 @@ namespace WellBites.MVVM.ViewModels
 				OnPropertyChanged(nameof(RecipeDetailsViewModel));
 				OnPropertyChanged(nameof(RecipeDetailsViewModel.ViewedRecipe));
 				RecipeDetailsVisibility = Visibility.Visible;
-				
 
 			});
 			

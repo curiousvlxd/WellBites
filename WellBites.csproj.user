@@ -8,6 +8,9 @@
     <Compile Update="MVVM\Views\FavoritesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\MyCaloriesPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\RecipeDetailsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -17,6 +20,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\FavoritesPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\MyCaloriesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\RecipeDetailsPage.xaml">

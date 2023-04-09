@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WellBites.Models
 {
-	internal class FavoritesList
+	public class FavoritesList
 	{
-		static FavoritesList instance;
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
+        static FavoritesList instance;
 		public static FavoritesList Instance
 		{
 			get
@@ -16,7 +21,6 @@ namespace WellBites.Models
 				if (instance == null) instance = new FavoritesList();
 				return instance;
 			}
-
 		}
 		private FavoritesList()
 		{

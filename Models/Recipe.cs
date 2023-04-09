@@ -2,6 +2,8 @@
 using Org.OpenAPITools.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,19 +13,22 @@ using WellBites.MVVM.Views;
 
 namespace WellBites.Models
 {
-	internal class Recipe : ObservableObject
+	public class Recipe : ObservableObject
 	{
-		public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
+        public int ApiId { get; set; }
 		public string Title { get; set; }
 		public string Image { get; set; }
-
-		public bool? IsCheap { get; set; }
+        public bool? IsCheap { get; set; }
 		public List<string> Diets { get; set; }
 		public List<string> Cuisines { get; set; }
 		public string Instructions { get; set; }
 		public int? CookingTimeInMinutes { get; set; }
+        public NutritionData Nutrition { get; set; }
 
-		bool isFavorite;
+        bool isFavorite;
 		public bool IsFavorite
 		{
 			get { return isFavorite; }
@@ -57,9 +62,8 @@ namespace WellBites.Models
 		}
 		public Recipe()
 		{
-			Id = 0;
+			ApiId = 0;
 			Title = "untitled recipe";
-
 		}
 
 		public string MissingIngredientsString {
@@ -93,11 +97,10 @@ namespace WellBites.Models
 
 		List<string> missingIngredients;
 
-		public GetRecipeNutritionWidgetByID200Response Nutrition { get; set; }
 		public void PopulateDetails()
 		{
 			RecipesApi apiInstance = new RecipesApi();
-			GetRecipeInformation200Response response = apiInstance.GetRecipeInformation(Id, true);
+			GetRecipeInformation200Response response = apiInstance.GetRecipeInformation(ApiId, true);
 			IsCheap = response.Cheap;
 			Cuisines = response.Cuisines;
 			Diets = response.Diets;
@@ -109,8 +112,13 @@ namespace WellBites.Models
 			Instructions = Instructions.Replace("</li>", "\n");
 			
 
-		Nutrition = apiInstance.GetRecipeNutritionWidgetByID(Id);
-
-		}
+		var sdkNutrition = apiInstance.GetRecipeNutritionWidgetByID(ApiId);
+        Nutrition = new NutritionData();
+        Nutrition.Id = Guid.NewGuid();
+        Nutrition.Calories = sdkNutrition.Calories;
+		Nutrition.Carbs = sdkNutrition.Carbs;
+		Nutrition.Fat = sdkNutrition.Fat;
+		Nutrition.Protein = sdkNutrition.Protein;
+        }
 	}
 }

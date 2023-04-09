@@ -48,7 +48,7 @@
 							</Style.Triggers>
 						</Style>
 					</StackPanel.Style>
-					<fa:ImageAwesome Icon="ClockOutline" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <fa:ImageAwesome Foreground="{DynamicResource TextColor}" Icon="ClockOutline" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
 					<TextBlock  Foreground="{DynamicResource TextColor}" Margin="10,0,0,0"  VerticalAlignment="Center">Cooking time: </TextBlock>
 					<TextBlock  Foreground="{DynamicResource TextColor}" Margin="3,0,0,0" VerticalAlignment="Center"  Text="{Binding ViewedRecipe.CookingTimeInMinutes}"/>
 					<TextBlock  Foreground="{DynamicResource TextColor}" Margin="3,0,0,0"  VerticalAlignment="Center" Text="min"/>
