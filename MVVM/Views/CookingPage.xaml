@@ -109,9 +109,12 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
-			<Button Grid.Row="2" Visibility="{Binding CookButtonVisibility}" Background="{DynamicResource LogoTextColor}" Command="{Binding CookCommand}"
-					Style="{StaticResource RoundedButton}" Margin="60,-10,60,10" Foreground="{DynamicResource CookForMeText}" FontFamily="{DynamicResource Bookstory}" FontSize="70">Cook for me >></Button>
-		</Grid>
+            <Button Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Height="60" Grid.Row="2" Visibility="{Binding CookButtonVisibility}" Background="{DynamicResource TitleBarColor}" Command="{Binding CookCommand}"
+                    Style="{StaticResource RoundedButton}" Margin="90,0,90,0" Foreground="{DynamicResource ListBoxText}" VerticalAlignment="Center">
+
+                <TextBlock FontSize="20" FontWeight="ExtraBold" Margin="0,0,0,0">Cook for me >></TextBlock>
+            </Button>
+        </Grid>
 		<Grid Grid.Column="1">
 			<!--RIGHT SIDE-->
 			<Grid.RowDefinitions>
