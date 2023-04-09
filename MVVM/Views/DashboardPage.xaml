@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WellBites.MVVM.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
 	  xmlns:fa="http://schemas.fontawesome.io/icons/"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -16,18 +17,18 @@
 			</ColumnDefinition>
 		</Grid.ColumnDefinitions>
 		<Border BorderThickness="0,0,1,0" Margin="0,20,0,20" BorderBrush="LightGray"/>
-		<ListBox Margin="10">
+        <ListBox Margin="10" Background="{DynamicResource ListBoxBackground}" >
 	
 			<ListBoxItem>
 				<StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Foreground="{DynamicResource TextColor}" Icon="Cutlery" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Find recipes</TextBlock>
+                    <fa:ImageAwesome Foreground="{DynamicResource ListBoxText}" Icon="Cutlery" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource TListBoxText}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Find recipes</TextBlock>
 				</StackPanel>
 			</ListBoxItem>
 			<ListBoxItem HorizontalAlignment="Stretch">
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <fa:ImageAwesome Foreground="{DynamicResource TextColor}" Icon="Star" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Favorites</TextBlock>
+                    <fa:ImageAwesome Foreground="{DynamicResource ListBoxText}" Icon="Star" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource ListBoxText}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Favorites</TextBlock>
 				</StackPanel>
 			</ListBoxItem>
 

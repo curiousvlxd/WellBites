@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="TitleBarColor" Color="#191919"/>
+    <SolidColorBrush x:Key="TitleBarColor" Color="#35363A"/>
     <SolidColorBrush x:Key="BackgroundColor" Color="#1C1C1C"/>
     <SolidColorBrush x:Key="BorderColor" Color="#1C1C1C"/>
     <SolidColorBrush x:Key="TextColor" Color="#F9F9FB"/>
@@ -12,5 +12,9 @@
     <SolidColorBrush x:Key="SunIconColor" Color="#E6B800"/>
     <SolidColorBrush x:Key="HintAssistColor" Color="#F9F3F3"/>
     <SolidColorBrush x:Key="ButtonColor" Color="#1C1C1C"/>
+    <SolidColorBrush x:Key="ListBoxBackground" Color="#9ACD67"/>
+    <SolidColorBrush x:Key="ListBoxText" Color="#1C1C1C"/>
+    <SolidColorBrush x:Key="CookForMeText" Color="#1C1C1C"/>
+
 
 </ResourceDictionary>

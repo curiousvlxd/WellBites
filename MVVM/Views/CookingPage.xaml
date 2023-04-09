@@ -56,6 +56,7 @@
 							<Style.Triggers>
 								<DataTrigger Binding="{Binding Text, ElementName=searchbar}" Value="">
 									<Setter Property="Visibility" Value="Visible"/>
+									<Setter Property="Foreground" Value="{DynamicResource TextColor}"></Setter>
 								</DataTrigger>
 							</Style.Triggers>
 						</Style>
@@ -75,7 +76,7 @@
 						<Grid HorizontalAlignment="Stretch">
 						<StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
 							<Image Source="{Binding ImageURL}" Width="50" Height="50"/>
-							<TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="20"/>
+                            <TextBlock Margin="15,0,0,0"  Foreground="{DynamicResource TextColor}"  Text="{Binding Name}" VerticalAlignment="Center" FontSize="20"/>
 							
 						</StackPanel>
 							
@@ -92,10 +93,10 @@
 
 
 								<Image DockPanel.Dock="Left" Source="{Binding ImageURL}" Width="50" Height="50" HorizontalAlignment="Right"/>
-								<TextBlock DockPanel.Dock="Left" Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20,0,0,0" FontSize="20"/>
+								<TextBlock Foreground="{DynamicResource TextColor}" DockPanel.Dock="Left" Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20,0,0,0" FontSize="20"/>
 
 							<!--<Button  Grid.Column="2" VerticalAlignment="Center" HorizontalContentAlignment="Right"></Button>-->
-								<fa:FontAwesome  Style="{DynamicResource faIcon}" DockPanel.Dock="Right" HorizontalAlignment="Right"  VerticalAlignment="Center" Icon="Close" TextAlignment="Right"  FontSize="20"  >
+                                <fa:FontAwesome Foreground="{DynamicResource TextColor}" Style="{DynamicResource faIcon}" DockPanel.Dock="Right" HorizontalAlignment="Right"  VerticalAlignment="Center" Icon="Close" TextAlignment="Right"  FontSize="20"  >
 									<i:Interaction.Triggers>
 										<i:EventTrigger EventName="MouseDown">
 											<i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.DeleteIngredientCommand }" CommandParameter="{Binding}" />
@@ -109,7 +110,7 @@
 				</ListBox.ItemTemplate>
 			</ListBox>
 			<Button Grid.Row="2" Visibility="{Binding CookButtonVisibility}" Background="{DynamicResource LogoTextColor}" Command="{Binding CookCommand}"
-					Style="{StaticResource RoundedButton}" Margin="60,10,60,10" Foreground="White" FontSize="30">Cook for me >></Button>
+					Style="{StaticResource RoundedButton}" Margin="60,-10,60,10" Foreground="{DynamicResource CookForMeText}" FontFamily="{DynamicResource Bookstory}" FontSize="70">Cook for me >></Button>
 		</Grid>
 		<Grid Grid.Column="1">
 			<!--RIGHT SIDE-->
@@ -135,9 +136,9 @@
 						<Grid>
 						<StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
 							<Image Source="{Binding ImageURL}" Width="100" Height="100"/>
-							<TextBlock Text="{Binding Title}" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap"/>
+                                <TextBlock Foreground="{DynamicResource TextColor}" Text="{Binding Title}" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap"/>
 						</StackPanel>
-							<fa:FontAwesome Icon="Star" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20">
+                            <fa:FontAwesome Foreground="{DynamicResource TextColor}" Icon="Star" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20">
 								<fa:FontAwesome.Style>
 									<Style TargetType="fa:FontAwesome">
 										<Style.Triggers>
