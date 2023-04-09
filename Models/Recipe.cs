@@ -43,7 +43,7 @@ namespace WellBites.Models
             set
             {
                 isFavorite = value;
-                //OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
         public string ImageURL
