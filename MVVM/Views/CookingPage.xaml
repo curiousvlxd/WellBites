@@ -84,7 +84,7 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
-			<ListBox x:Name="selectedIngredients" Grid.Row="1" ItemsSource="{Binding SelectedIngredients}" HorizontalContentAlignment="Stretch" Margin="0,0,10,0" > <!--LEFT SIDE-->
+			<ListBox Background="Transparent" x:Name="selectedIngredients" Grid.Row="1" ItemsSource="{Binding SelectedIngredients}" HorizontalContentAlignment="Stretch" Margin="0,0,10,0" > <!--LEFT SIDE-->
 				<ListBox.ItemTemplate >
 					<DataTemplate DataType="{x:Type models:Ingredient}" >
 						<Grid HorizontalAlignment="Stretch" >

@@ -10,8 +10,6 @@
   <ItemGroup>
     <None Remove="Fonts\Bookstory.ttf" />
     <None Remove="Fonts\JetBrainsMono-Regular.ttf" />
-    <None Remove="Icons\hidden_icon.png" />
-    <None Remove="Icons\unhidden_icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,12 +37,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\JetBrainsMono-Regular.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Icons\hidden_icon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Icons\unhidden_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

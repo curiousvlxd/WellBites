@@ -22,7 +22,7 @@
 			<ListBoxItem PreviewMouseDown="findOption_MouseDown">
 				<StackPanel Orientation="Horizontal" >
                     <fa:ImageAwesome Foreground="{DynamicResource ListBoxText}" Icon="Cutlery" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource TListBoxText}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Find recipes</TextBlock>
+                    <TextBlock Foreground="{DynamicResource ListBoxText}" FontWeight="DemiBold" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Find recipes</TextBlock>
 				</StackPanel>
 			</ListBoxItem>
 			<ListBoxItem HorizontalAlignment="Stretch" PreviewMouseDown="favoritesOption_MouseDown">
