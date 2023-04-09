@@ -11,7 +11,7 @@ namespace WellBites.MVVM.ViewModels
 {
 	internal class FavoritesViewModel:ObservableObject
 	{
-		ObservableCollection<Recipe> Recipes { get; set; }
+		public ObservableCollection<Recipe> Recipes { get; set; }
 		public FavoritesViewModel()
 		{
 

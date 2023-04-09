@@ -20,12 +20,47 @@
 			<TextBlock FontWeight="Bold" FontSize="20">Instructions</TextBlock>
 			<TextBlock Text="{Binding ViewedRecipe.Instructions}" TextWrapping="Wrap"></TextBlock>
 				<StackPanel Orientation="Horizontal" Margin="10">
+					<StackPanel.Style>
+						<Style TargetType="StackPanel">
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding ViewedRecipe.CookingTimeInMinutes}" Value="{x:Null}">
+									<Setter Property="Visibility" Value="Collapsed"/>
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</StackPanel.Style>
 					<fa:ImageAwesome Icon="ClockOutline" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
 					<TextBlock Margin="10,0,0,0"  VerticalAlignment="Center">Cooking time: </TextBlock>
 					<TextBlock Margin="3,0,0,0" VerticalAlignment="Center"  Text="{Binding ViewedRecipe.CookingTimeInMinutes}"/>
 					<TextBlock Margin="3,0,0,0"  VerticalAlignment="Center" Text="min"/>
 				</StackPanel>
+				
+				<TextBlock FontWeight="Bold" FontSize="20">Nutrition</TextBlock>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition></ColumnDefinition>
+						<ColumnDefinition></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
 
+					</Grid.RowDefinitions>
+					<TextBlock>Calories:</TextBlock>
+					<TextBlock Grid.Row="1">Fat:</TextBlock>
+					<TextBlock Grid.Row="2">Carbohydrates:</TextBlock>
+					<TextBlock Grid.Row="4">Protein:</TextBlock>
+
+					<TextBlock Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Calories}"></TextBlock>
+					<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Fat}"></TextBlock>
+					<TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Carbs}"></TextBlock>
+					<TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ViewedRecipe.Nutrition.Protein}"></TextBlock>
+
+				</Grid>
+				
 			</StackPanel>
 		</ScrollViewer>
 	</Grid>

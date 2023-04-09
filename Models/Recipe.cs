@@ -60,6 +60,8 @@ namespace WellBites.Models
 			Title = "untitled recipe";
 
 		}
+
+		public GetRecipeNutritionWidgetByID200Response Nutrition { get; set; }
 		public void PopulateDetails()
 		{
 			RecipesApi apiInstance = new RecipesApi();
@@ -73,6 +75,8 @@ namespace WellBites.Models
 			Instructions = Instructions.Replace("</ol>", "");
 			Instructions = Instructions.Replace("<li>", "- ");
 			Instructions = Instructions.Replace("</li>", "\n");
+
+		Nutrition = apiInstance.GetRecipeNutritionWidgetByID(Id);
 
 		}
 	}
