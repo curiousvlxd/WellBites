@@ -53,10 +53,11 @@ internal class CalorieCalculator
 			}
 			
 	}
-	public int GetCaloriesPerDay(UserCharacteristics characteristics, Activity activity)
+	public int GetCaloriesPerDay(User user, Activity activity)
 	{
-		int sex_variable = characteristics.Sex == Sex.Male ? 5 : -161;
-		double bmr = 10 * characteristics.Weight + 6.25 * characteristics.Height - 5 * characteristics.Age + sex_variable;
+		int sex_variable = user.Sex == Sex.Male ? 5 : -161;
+        TimeSpan timeDifference = DateTime.Now - user.DateOfBirth;
+            double bmr = 10 * user.Weight + 6.25 * user.Height - 5 * user.Age  + sex_variable;
 		return (int)Math.Round(GetActivityMultiplier(activity) * bmr);
 	}
 }

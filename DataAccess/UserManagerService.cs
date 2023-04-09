@@ -29,24 +29,17 @@ namespace WellBites.DataAccess
             _dbContext.SaveChanges();
         }
 
-        public void DeleteUser(int userId)
+        public void DeleteUser(User user)
         {
-            var user = _dbContext.Users.FirstOrDefault(u => u.Id == userId);
-            if (user != null)
-            {
-                _dbContext.Users.Remove(user);
-                _dbContext.SaveChanges();
-            }
+            _dbContext.Users.Remove(user);
+            _dbContext.SaveChanges();
         }
 
-        public List<User> GetAllUsers()
+        public void UpdateUserPassword(User user, string password)
         {
-            return _dbContext.Users.Include(u => u.Characteristics).ToList();
-        }
-
-        public User GetUserById(int userId)
-        {
-            return _dbContext.Users.Include(u => u.Characteristics).FirstOrDefault(u => u.Id == userId);
+          user.CreatePasswordHash(password);
+            _dbContext.Users.Update(user);
+            _dbContext.SaveChanges();
         }
     }
 }

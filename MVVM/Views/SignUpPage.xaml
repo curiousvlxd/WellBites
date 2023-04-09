@@ -115,7 +115,7 @@
 
         <ComboBox x:Name="cbSex" FontSize="20" FontWeight="DemiBold" materialDesign:HintAssist.Hint="Sex" Foreground="{DynamicResource TextColor}" ItemsSource="{Binding Source={StaticResource Sex}}" Height="36" Margin="278,438,587,0" VerticalAlignment="Top"/>
 
-        <DatePicker x:Name="dpDateOfBirth" PreviewTextInput="NumbereValidationDatePicker" FontWeight="DemiBold" materialDesign:HintAssist.Hint="Date of birth" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="278,559,552,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpDateOfBirth" PreviewTextInput="NumberValidationDatePicker" FontWeight="DemiBold" materialDesign:HintAssist.Hint="Date of birth" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="278,559,552,0" VerticalAlignment="Top"/>
 
         <TextBox x:Name="tbWeight" PreviewTextInput="NumberValidationTextBox" materialDesign:HintAssist.Hint="Weight (in kg)" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="DemiBold" Margin="560,439,278,356" RenderTransformOrigin="0.455,0.571"/>
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WellBites.MVVM.ViewModels;
 
 namespace WellBites.Views
 {
@@ -38,7 +39,7 @@ namespace WellBites.Views
 
         private void BtnSignUp_OnClick(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new SignUpPage();
+            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new SignUpPage((UserViewModel)this.DataContext);
         }
 
         private void BtnHideunhide_OnMouseDown(object sender, MouseButtonEventArgs e)

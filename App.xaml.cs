@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using WellBites.DataAccess;
 using WellBites.MVVM.ViewModels;
 using WellBites.Views;
+using WellBites.Models;
 
 namespace WellBites
 {
@@ -35,30 +36,20 @@ namespace WellBites
                     var connectionString = hostContext.Configuration.GetConnectionString("DefaultConnection");
                     services.AddDbContext<WellBitesDbContext>(options =>
                         options.UseSqlServer(connectionString));
-                    services.AddTransient<UserManagerService>();
+                    services.AddScoped<UserManagerService>();
                 })
                 .Build();
-            using (var scope = host.Services.CreateScope())
-            {
+                var scope = host.Services.CreateScope();
                 var services = scope.ServiceProvider;
                 var dbContext = services.GetRequiredService<WellBitesDbContext>();
                 var configuration = services.GetRequiredService<IConfiguration>();
                 var userManagerService = services.GetRequiredService<UserManagerService>();
-
-                //try
-                //{
-                //    dbContext.Database.Migrate();
-                //    dbContext.SaveChanges();
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-
+                //dbContext.Users.RemoveRange(dbContext.Users);
+                //dbContext.SaveChanges();
                 AuthPage authPage = new AuthPage();
                 authPage.DataContext = new UserViewModel(userManagerService);
                 new MainWindow(authPage, configuration.GetSection("api-keys")["x-api-key"]).Show();
-            }
         }
     }
 }
+

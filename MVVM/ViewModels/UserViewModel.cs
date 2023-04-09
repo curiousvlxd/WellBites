@@ -8,25 +8,15 @@ using WellBites.Models;
 
 namespace WellBites.MVVM.ViewModels
 {
-    class UserViewModel
+    public class UserViewModel
     {   
 
         public UserManagerService UserManagerService { get; set; }
         public User User { get; set; }
-
-        public UserCharacteristics UserCharacteristics { get; set; }
-
-        public UserViewModel()
-        {
-            User = new User();
-            UserCharacteristics = new UserCharacteristics();
-        }
-
         public UserViewModel(UserManagerService userManagerService)
         {
             UserManagerService = userManagerService;
             User = new User();
-            UserCharacteristics = new UserCharacteristics();
         }
 
     }
