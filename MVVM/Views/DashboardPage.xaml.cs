@@ -22,6 +22,10 @@ namespace WellBites.MVVM.Views
 	public partial class DashboardPage : Page
 	{	
 		private UserViewModel _userViewModel;
+
+		private CookingViewModel cookingvm = new CookingViewModel();
+		private FavoritesViewModel favvm = new FavoritesViewModel();
+
 		public DashboardPage(UserViewModel userViewModel)
 		{
 			InitializeComponent();
@@ -34,12 +38,13 @@ namespace WellBites.MVVM.Views
 			//frame.Content = new CookingPage();
 
 			frame.Content = new CookingPage();
-			frame.DataContext = new CookingViewModel();
+			frame.DataContext = cookingvm;
 		}
 
 		private void favoritesOption_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-			//frame.Content = new FavoritesPage();
+			frame.Content = new FavoritesPage();
+			frame.DataContext = favvm;
 
 		}
 	}

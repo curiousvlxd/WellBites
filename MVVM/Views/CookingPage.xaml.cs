@@ -35,5 +35,12 @@ namespace WellBites
 
 
 		}
+
+		private void FontAwesome_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			e.Handled = true;
+			var vm = ((CookingViewModel)this.DataContext);
+			vm.ToggleFavoriteRecipeCommand.Execute((sender as FrameworkElement).DataContext);
+		}
 	}
 }

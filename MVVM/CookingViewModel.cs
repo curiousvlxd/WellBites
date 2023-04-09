@@ -57,6 +57,9 @@ namespace WellBites.MVVM
 		}
 		public RelayCommand SearchChangedCommand { get; set; }
 
+		private FavoritesList favlist = FavoritesList.Instance;
+
+
 		public Visibility AutocompletePopupVisibility
 		{
 			get
@@ -179,8 +182,8 @@ namespace WellBites.MVVM
 						{
 							Title = rec.Title,
 							Id = Denullify(rec.Id),
-
-						}));
+							MissingIngredients = rec.MissedIngredients
+						})); ;;
 
 				});
 
@@ -211,7 +214,17 @@ namespace WellBites.MVVM
 
 			ToggleFavoriteRecipeCommand = new RelayCommand((recipe) =>
 			{
-				((Recipe)recipe).IsFavorite = !((Recipe)recipe).IsFavorite;
+				Recipe rec = (Recipe)recipe;
+				rec.IsFavorite = !rec.IsFavorite;
+
+				if(rec.IsFavorite)
+				{
+					favlist.Recipes.Add(rec);
+				}
+				else
+				{
+					favlist.Recipes.Remove(rec);
+				}
 
 			});
 

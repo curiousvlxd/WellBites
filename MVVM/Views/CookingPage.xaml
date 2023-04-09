@@ -134,11 +134,15 @@
 				<ListBox.ItemTemplate>
 					<DataTemplate DataType="{x:Type models:Recipe}">
 						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition></RowDefinition>
+								<RowDefinition></RowDefinition>
+							</Grid.RowDefinitions>
 						<StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
 							<Image Source="{Binding ImageURL}" Width="100" Height="100"/>
                                 <TextBlock Foreground="{DynamicResource TextColor}" Text="{Binding Title}" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap"/>
 						</StackPanel>
-                            <fa:FontAwesome Foreground="{DynamicResource TextColor}" Icon="Star" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20">
+                            <fa:FontAwesome MouseDown="FontAwesome_MouseDown" Icon="Star" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Panel.ZIndex="2000">
 								<fa:FontAwesome.Style>
 									<Style TargetType="fa:FontAwesome">
 										<Style.Triggers>
@@ -159,6 +163,22 @@
 
 
 							</fa:FontAwesome>
+							<Grid Grid.Row="1">
+								<TextBlock Text="{Binding MissingIngredientsString}" TextWrapping="Wrap">
+									<TextBlock.Style>
+										<Style TargetType="TextBlock">
+											<Style.Triggers>
+												<DataTrigger Binding="{Binding HasMissingIngredients}" Value="{StaticResource TrueValue}">
+													<Setter Property="Foreground" Value="Red"/>
+												</DataTrigger>
+												<DataTrigger Binding="{Binding HasMissingIngredients}" Value="{StaticResource FalseValue}">
+													<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+												</DataTrigger>
+											</Style.Triggers>
+										</Style>
+									</TextBlock.Style>
+								</TextBlock>
+							</Grid>
 						</Grid>
 					</DataTemplate>
 				</ListBox.ItemTemplate>
