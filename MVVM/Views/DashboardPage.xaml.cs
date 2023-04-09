@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WellBites.MVVM.ViewModels;
 
 namespace WellBites.MVVM.Views
 {
@@ -19,10 +20,12 @@ namespace WellBites.MVVM.Views
 	/// Interaction logic for DashboardPage.xaml
 	/// </summary>
 	public partial class DashboardPage : Page
-	{
-		public DashboardPage()
+	{	
+		private UserViewModel _userViewModel;
+		public DashboardPage(UserViewModel userViewModel)
 		{
 			InitializeComponent();
+			_userViewModel = userViewModel;
 		}
 	}
 }

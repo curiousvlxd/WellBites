@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WellBites.Models;
 using WellBites.MVVM.ViewModels;
+using WellBites.MVVM.Views;
 
 namespace WellBites.Views
 {
@@ -42,19 +43,20 @@ namespace WellBites.Views
 
         private void BtnGoNext_OnClick_OnClick(object sender, RoutedEventArgs e)
         {
-            if (!IsFormValid()) return;
+            //if (!IsFormValid()) return;
 
-            DateTime selectedDate = dpDateOfBirth.SelectedDate.Value;
+            //DateTime selectedDate = dpDateOfBirth.SelectedDate.Value;
             
-            _userViewModel.User.Username = TbUsername.Text;
-            _userViewModel.User.Email = TbEmail.Text;
-            _userViewModel.User.CreatePasswordHash(TbPassword.Text);
-            _userViewModel.User.DateOfBirth = selectedDate;
-            _userViewModel.User.Height = int.Parse(tbHeight.Text);
-            _userViewModel.User.Weight = int.Parse(tbWeight.Text);
-            _userViewModel.User.Activity = (Activity)cbActivity.SelectedItem;
-            _userViewModel.User.Sex = (Sex)cbSex.SelectedItem;
-            _userViewModel.UserManagerService.AddUser(_userViewModel.User);
+            //_userViewModel.User.Username = TbUsername.Text;
+            //_userViewModel.User.Email = TbEmail.Text;
+            //_userViewModel.User.CreatePasswordHash(TbPassword.Text);
+            //_userViewModel.User.DateOfBirth = selectedDate;
+            //_userViewModel.User.Height = int.Parse(tbHeight.Text);
+            //_userViewModel.User.Weight = int.Parse(tbWeight.Text);
+            //_userViewModel.User.Activity = (Activity)cbActivity.SelectedItem;
+            //_userViewModel.User.Sex = (Sex)cbSex.SelectedItem;
+            //_userViewModel.UserManagerService.AddUser(_userViewModel.User);
+            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new DashboardPage(_userViewModel);
         }
 
         public bool IsFormValid()
@@ -134,8 +136,6 @@ namespace WellBites.Views
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
-            PbPassword.Password = TbPassword.Text;
-            PbPasswordRepeat.Password = TbPasswordRepeat.Text;
         }
 
         private void NumberValidationDatePicker(object sender, TextCompositionEventArgs e)

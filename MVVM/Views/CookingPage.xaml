@@ -35,7 +35,7 @@
 			<Grid> 
 				<!-- for textbox placeholder-->
 
-				<TextBox Margin="10,10,10,10" Name="searchbar" Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="20">
+                <TextBox Foreground="{DynamicResource TextColor}" Margin="10,10,10,10" Name="searchbar" Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="20">
 					<i:Interaction.Triggers>
 						<i:EventTrigger EventName="TextChanged">
 							<i:InvokeCommandAction Command="{Binding SearchChangedCommand}"/>
@@ -43,7 +43,7 @@
 					</i:Interaction.Triggers>
 
 				</TextBox>
-				<TextBlock IsHitTestVisible="False" Text="Search ingredients..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray" FontSize="20">
+                <TextBlock IsHitTestVisible="False" Text="Search ingredients..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="{DynamicResource TextColor}" FontSize="20">
 					<TextBlock.Style>
 						<Style TargetType="{x:Type TextBlock}">
 							<Setter Property="Visibility" Value="Collapsed"/>
@@ -120,7 +120,7 @@
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
 			</fa:FontAwesome>
-			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Text="{Binding RightSideTopText}" ></TextBlock>
+			<TextBlock FontWeight="DemiBold" Foreground="{DynamicResource TextColor}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Text="{Binding RightSideTopText}" ></TextBlock>
 
 			
 			<ListBox x:Name="recipesListbox" ItemsSource="{Binding FoundRecipes}" Grid.Row="1" HorizontalContentAlignment="Stretch">
