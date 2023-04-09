@@ -214,8 +214,8 @@ namespace WellBites.MVVM
 
 			ToggleFavoriteRecipeCommand = new RelayCommand((recipe) =>
 			{
-				Recipe rec = (Recipe)Recipe;
-				(rec.IsFavorite = !(rec.IsFavorite;
+				Recipe rec = (Recipe)recipe;
+				rec.IsFavorite = !rec.IsFavorite;
 
 				if(rec.IsFavorite)
 				{
