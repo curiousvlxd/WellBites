@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents.DocumentStructures;
 using WellBites.Core;
 using WellBites.MVVM.Views;
 
 namespace WellBites.Models
 {
-	internal class Recipe:ObservableObject
+	internal class Recipe : ObservableObject
 	{
 		public int Id { get; set; }
 		public string Title { get; set; }
@@ -61,6 +62,37 @@ namespace WellBites.Models
 
 		}
 
+		public string MissingIngredientsString {
+			get
+			{
+				if (MissingIngredients.Count == 0) return "You have all ingredients!";
+				else
+				{
+					string str = "Missing ingredients: ";
+					foreach (var ing in MissingIngredients)
+					{
+						str += ing.Name;
+						str += ", ";
+					}
+					str = str.Substring(0, str.Length-2);
+
+					return str;
+				}
+			}
+		
+		}
+
+		public bool HasMissingIngredients
+		{
+			get
+			{
+				return MissingIngredients.Count > 0;
+			}
+		}
+		public List<SearchRecipesByIngredients200ResponseInnerMissedIngredientsInner> MissingIngredients { get; set; }
+
+		List<string> missingIngredients;
+
 		public GetRecipeNutritionWidgetByID200Response Nutrition { get; set; }
 		public void PopulateDetails()
 		{
@@ -75,6 +107,7 @@ namespace WellBites.Models
 			Instructions = Instructions.Replace("</ol>", "");
 			Instructions = Instructions.Replace("<li>", "- ");
 			Instructions = Instructions.Replace("</li>", "\n");
+			
 
 		Nutrition = apiInstance.GetRecipeNutritionWidgetByID(Id);
 

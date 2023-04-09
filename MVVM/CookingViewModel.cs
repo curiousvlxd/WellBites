@@ -179,8 +179,8 @@ namespace WellBites.MVVM
 						{
 							Title = rec.Title,
 							Id = Denullify(rec.Id),
-
-						}));
+							MissingIngredients = rec.MissedIngredients
+						})); ;;
 
 				});
 
