@@ -70,5 +70,15 @@ namespace WellBites.Views
                 BtnHidePass.Visibility = Visibility.Visible;
             }
         }
+
+        private void PbPassword_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TbPassword.Text = PbPassword.Password;
+        }
+
+        private void TbPassword_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            PbPassword.Password = TbPassword.Text;
+        }
     }
 }
