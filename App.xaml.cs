@@ -12,6 +12,7 @@ using WellBites.DataAccess;
 using WellBites.MVVM.ViewModels;
 using WellBites.Views;
 using WellBites.Models;
+using WellBites.MVVM.Views;
 
 namespace WellBites
 {
@@ -44,10 +45,11 @@ namespace WellBites
                 var dbContext = services.GetRequiredService<WellBitesDbContext>();
                 var configuration = services.GetRequiredService<IConfiguration>();
                 var userManagerService = services.GetRequiredService<UserManagerService>();
-                //dbContext.Users.RemoveRange(dbContext.Users);
-                //dbContext.SaveChanges();
-                AuthPage authPage = new AuthPage(new UserViewModel(userManagerService));
-                new MainWindow(authPage, configuration.GetSection("api-keys")["x-api-key"]).Show();
+            //dbContext.Users.RemoveRange(dbContext.Users);
+            //dbContext.SaveChanges();
+            //AuthPage authPage = new AuthPage(new UserViewModel(userManagerService));
+            DashboardPage page = new DashboardPage(new UserViewModel(userManagerService));
+               new MainWindow(page, configuration.GetSection("api-keys")["x-api-key"]).Show();
         }
     }
 }
