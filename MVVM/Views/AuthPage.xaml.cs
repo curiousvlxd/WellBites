@@ -38,7 +38,7 @@ namespace WellBites.Views
 
         private void BtnSignIn_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_userViewModel.UserManagerService.AuthenticateUser(TbEmail.Text, PbPassword.Password))
+            if (_userViewModel.UserManagerService.AuthenticateUser(TbUsername.Text, PbPassword.Password))
             {
                 ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new DashboardPage(_userViewModel);
             }
