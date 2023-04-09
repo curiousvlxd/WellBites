@@ -72,7 +72,7 @@ namespace WellBites.Models
 		{
 			Id = 0;
 			Title = "untitled recipe";
-			MissingIngredients = new();
+			
 
 		}
 
@@ -101,6 +101,7 @@ namespace WellBites.Models
 		{
 			get
 			{
+				if(MissingIngredients == null) return false;
 				return MissingIngredients.Count > 0;
 			}
 		}

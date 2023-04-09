@@ -33,6 +33,7 @@
 								<DataTrigger Binding="{Binding ViewedRecipe.HasMissingIngredients}" Value="{StaticResource FalseValue}">
 									<Setter Property="Foreground" Value="{DynamicResource LogoTextColor}"/>
 								</DataTrigger>
+								
 							</Style.Triggers>
 						</Style>
 					</TextBlock.Style>

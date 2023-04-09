@@ -150,7 +150,7 @@
 				</TextBlock>
 			</Grid>
 
-			<fa:FontAwesome Icon="ArrowLeft" Foreground="DarkGray" FontSize="30" Background="{DynamicResource BackgroundColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Visibility="{Binding RecipeDetailsVisibility}" Style="{DynamicResource faIcon}" >
+			<fa:FontAwesome Icon="ArrowLeft" Foreground="DarkGray" FontSize="30" Width="50" Background="{DynamicResource BackgroundColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Visibility="{Binding RecipeDetailsVisibility}" Style="{DynamicResource faIcon}" >
 				
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseDown">
