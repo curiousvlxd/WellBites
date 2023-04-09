@@ -30,9 +30,9 @@
 		</Grid.ColumnDefinitions>
 		<Grid Grid.Column="0" Grid.ColumnSpan="2"> <!--MAIN GRID-->
 			<Grid.RowDefinitions>
-				<RowDefinition Height="4*"></RowDefinition>
-				<RowDefinition Height="21*"></RowDefinition>
-				<RowDefinition Height="5*"></RowDefinition>
+				<RowDefinition Height="1*"></RowDefinition>
+				<RowDefinition Height="7*"></RowDefinition>
+				<RowDefinition Height="1*"></RowDefinition>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="19*"/>
@@ -115,13 +115,41 @@
             </Button>
         </Grid>
 		<Grid Grid.Column="1">
+			
 			<!--RIGHT SIDE-->
+			
 			<Grid.RowDefinitions>
 				<RowDefinition></RowDefinition>
 				<RowDefinition Height="8*"></RowDefinition>
 			</Grid.RowDefinitions>
 
-			<fa:FontAwesome Icon="ArrowLeft" Foreground="DarkGray" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Visibility="{Binding RecipeDetailsVisibility}" Style="{DynamicResource faIcon}" >
+			<Grid>
+				<!-- for textbox placeholder-->
+
+				<TextBox Foreground="{DynamicResource TextColor}" Margin="10,10,10,10" Name="recsearchbar" Text="{Binding RecSearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="20">
+					<i:Interaction.Triggers>
+						<i:EventTrigger EventName="TextChanged">
+							<i:InvokeCommandAction Command="{Binding RecSearchChangedCommand}"/>
+						</i:EventTrigger>
+					</i:Interaction.Triggers>
+
+				</TextBox>
+				<TextBlock IsHitTestVisible="False" Text="Search recipes..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="{DynamicResource TextColor}" FontSize="20">
+					<TextBlock.Style>
+						<Style TargetType="{x:Type TextBlock}">
+							<Setter Property="Visibility" Value="Collapsed"/>
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding Text, ElementName=recsearchbar}" Value="">
+									<Setter Property="Visibility" Value="Visible"/>
+									<Setter Property="Foreground" Value="{DynamicResource TextColor}"></Setter>
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</TextBlock.Style>
+				</TextBlock>
+			</Grid>
+
+			<fa:FontAwesome Icon="ArrowLeft" Foreground="DarkGray" FontSize="30" Width="50" Background="{DynamicResource BackgroundColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Visibility="{Binding RecipeDetailsVisibility}" Style="{DynamicResource faIcon}" >
 				
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseDown">

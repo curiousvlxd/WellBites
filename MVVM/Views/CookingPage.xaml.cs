@@ -40,5 +40,6 @@ namespace WellBites
 			var vm = ((CookingViewModel)this.DataContext);
 			vm.ToggleFavoriteRecipeCommand.Execute((sender as FrameworkElement).DataContext);
 		}
+
 	}
 }

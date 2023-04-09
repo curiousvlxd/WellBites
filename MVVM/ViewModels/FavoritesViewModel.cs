@@ -53,7 +53,7 @@ namespace WellBites.MVVM.ViewModels
 			RecipeSelectedCommand = new RelayCommand((selectedIndex) =>
 			{
 				
-				if ((int)selectedIndex < 0) return;
+				if ((int)selectedIndex < 0 || (int)selectedIndex>=FavoritesList.Recipes.Count) return;
 				
 				Recipe selected = FavoritesList.Recipes[(int)selectedIndex];
 				SelectedRecipe = selected;
@@ -84,12 +84,21 @@ namespace WellBites.MVVM.ViewModels
 				OnPropertyChanged(nameof(FavoritesList));
 				OnPropertyChanged(nameof(FavoritesList.Recipes));
 			});
+
+
+			BackToFavListCommand = new RelayCommand((o) =>
+			{
+				RecipeDetailsVisibility = Visibility.Collapsed;
+				
+			});
+
 			recipeDetailsVisibility = Visibility.Hidden;
 			RecipeDetailsViewModel = new RecipeDetailsViewModel();
 		}
 
 		public RelayCommand RecipeSelectedCommand { get; set; }
 		public RelayCommand ToggleFavoriteRecipeCommand { get; set; }
+		public RelayCommand BackToFavListCommand { get; set; }
 		Visibility recipeDetailsVisibility;
 		public Visibility RecipeDetailsVisibility
 		{

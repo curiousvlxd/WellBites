@@ -21,11 +21,21 @@
 		<vm:FavoritesViewModel/>
 	</Page.DataContext>
     <Grid>
+		
 		<TextBlock FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource TextColor}" Visibility="{Binding NoFavsTextVisibility}">No favourite recipes yet</TextBlock>
-		<ListBox x:Name="recipesListbox" ItemsSource="{Binding FavoritesList.Recipes}" Grid.Row="1" HorizontalContentAlignment="Stretch" Margin="10,0,0,0">
+		<ListBox SelectionChanged="recipesListbox_SelectionChanged" x:Name="recipesListbox"  ItemsSource="{Binding FavoritesList.Recipes, Mode=TwoWay}" Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="10,0,0,0">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="SelectionChanged">
+					<i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.RecipeSelectedCommand}" CommandParameter="{Binding SelectedIndex, ElementName=recipesListbox}" />
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
 			<ListBox.ItemTemplate>
+				
 				<DataTemplate DataType="{x:Type models:Recipe}">
-					<Grid>
+					
+					<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+						
+
 						<StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
 							<Image Source="{Binding ImageURL}" Width="100" Height="100"/>
 							<TextBlock Text="{Binding Title}" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap"/>
@@ -43,25 +53,30 @@
 									</Style.Triggers>
 								</Style>
 							</fa:FontAwesome.Style>
+							<!--
 							<i:Interaction.Triggers>
 								<i:EventTrigger EventName="MouseDown">
 									<i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.ToggleFavoriteRecipeCommand}" CommandParameter="{Binding}"  />
 								</i:EventTrigger>
 							</i:Interaction.Triggers>
-
+							-->
 
 						</fa:FontAwesome>
 					</Grid>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
-			<i:Interaction.Triggers>
-				<i:EventTrigger EventName="SelectionChanged">
-					<i:InvokeCommandAction Command="{Binding RecipeSelectedCommand}" CommandParameter="{Binding SelectedIndex, ElementName=recipesListbox}" />
-				</i:EventTrigger>
-			</i:Interaction.Triggers>
+			
 		</ListBox>
 		<Grid Visibility="{Binding RecipeDetailsVisibility}" Grid.Row="1" Background="{DynamicResource BackgroundColor}" Panel.ZIndex="1000">
 			<!--RIGHT SIDE - RECIPE DETAILS VIEW-->
+			<fa:FontAwesome MouseDown="FontAwesome_MouseDown"
+			Icon="ArrowLeft" Foreground="White" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Visibility="Visible" Style="{DynamicResource faIcon}" Panel.ZIndex="1000">
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="MouseDown">
+						<i:InvokeCommandAction Command="{Binding BackToFavListCommand}" />
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+			</fa:FontAwesome>
 			<Frame Source="RecipeDetailsPage.xaml" Name="recipeDetailsFrame" DataContext="{Binding RecipeDetailsViewModel, BindsDirectlyToSource=True}"/>
 		</Grid>
 	</Grid>

@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Documents.DocumentStructures;
 using WellBites.Core;
@@ -35,7 +36,7 @@ namespace WellBites.Models
 			set
 			{
 				isFavorite = value;
-				OnPropertyChanged();
+				//OnPropertyChanged();
 			}
 		}
 		public string ImageURL
@@ -69,6 +70,7 @@ namespace WellBites.Models
 		public string MissingIngredientsString {
 			get
 			{
+				if (MissingIngredients == null) return "";
 				if (MissingIngredients.Count == 0) return "You have all ingredients!";
 				else
 				{
@@ -90,19 +92,29 @@ namespace WellBites.Models
 		{
 			get
 			{
+				if(MissingIngredients == null) return false;
 				return MissingIngredients.Count > 0;
 			}
 		}
+		public string Summary { get; set; }
 		public List<SearchRecipesByIngredients200ResponseInnerMissedIngredientsInner> MissingIngredients { get; set; }
 
 		List<string> missingIngredients;
 
 		public void PopulateDetails()
 		{
+			PopulateLight();
+			RecipesApi apiInstance = new RecipesApi();
+			Nutrition = apiInstance.GetRecipeNutritionWidgetByID(Id);
+
+		}
+		public void PopulateLight()
+		{
 			RecipesApi apiInstance = new RecipesApi();
 			GetRecipeInformation200Response response = apiInstance.GetRecipeInformation(ApiId, true);
 			IsCheap = response.Cheap;
 			Cuisines = response.Cuisines;
+			Instructions = response.Instructions;
 			Diets = response.Diets;
 			CookingTimeInMinutes = response.ReadyInMinutes;
 			Instructions = response.Instructions;
