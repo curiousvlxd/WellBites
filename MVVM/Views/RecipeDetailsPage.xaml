@@ -17,8 +17,8 @@
 		<Image Source="{Binding ViewedRecipe.BigImageURL}" Margin="10" Width="312"/>
 			
 
-			<TextBlock FontWeight="Bold" FontSize="20">Instructions</TextBlock>
-			<TextBlock Text="{Binding ViewedRecipe.Instructions}" TextWrapping="Wrap"></TextBlock>
+			<TextBlock Foreground="{DynamicResource TextColor}" FontWeight="Bold" FontSize="20">Instructions</TextBlock>
+            <TextBlock Foreground="{DynamicResource TextColor}" Text="{Binding ViewedRecipe.Instructions}" TextWrapping="Wrap"></TextBlock>
 				<StackPanel Orientation="Horizontal" Margin="10">
 					<StackPanel.Style>
 						<Style TargetType="StackPanel">

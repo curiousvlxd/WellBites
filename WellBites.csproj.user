@@ -22,5 +22,8 @@
     <Page Update="MVVM\Views\RecipeDetailsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\MyScrollBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

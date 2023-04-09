@@ -12,5 +12,8 @@
     <SolidColorBrush x:Key="SunIconColor" Color="#E6B800"/>
     <SolidColorBrush x:Key="HintAssistColor" Color="#C1C3C6"/>
     <SolidColorBrush x:Key="ButtonColor" Color="#F9F9FB"/>
+    <SolidColorBrush x:Key="ListBoxBackground" Color="#F3F3F3"/>
+    <SolidColorBrush x:Key="ListBoxText" Color="#747474"/>
+    <SolidColorBrush x:Key="CookForMeText" Color="#FFFFFF"/>
 
 </ResourceDictionary>   
