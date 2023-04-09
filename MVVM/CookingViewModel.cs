@@ -19,7 +19,7 @@ namespace WellBites.MVVM
 		ObservableCollection<Ingredient> suggestedIngredients;
 		ObservableCollection<Recipe> foundRecipes;
 
-		string rightSideTopText = "Recipes";
+		string rightSideTopText = "";
 		public string RightSideTopText
 		{
 			get { return rightSideTopText; }
@@ -42,7 +42,6 @@ namespace WellBites.MVVM
 			}
 
 
-
 		public ObservableCollection<Recipe> FoundRecipes
 		{
 			get
@@ -56,6 +55,7 @@ namespace WellBites.MVVM
 			}
 		}
 		public RelayCommand SearchChangedCommand { get; set; }
+		public RelayCommand RecSearchChangedCommand { get; set; }
 
 		private FavoritesList favlist = FavoritesList.Instance;
 
@@ -106,6 +106,20 @@ namespace WellBites.MVVM
 			}
 		}
 
+		string recSearchQuery;
+		public string RecSearchQuery
+		{
+			get
+			{
+				return recSearchQuery;
+			}
+			set
+			{
+				recSearchQuery = value;
+				OnPropertyChanged();
+			}
+		}
+
 		public ObservableCollection<Ingredient>  SelectedIngredients { get; set; }
 		private void GetAutocomplete()
 		{
@@ -129,6 +143,36 @@ namespace WellBites.MVVM
 				MessageBox.Show(ex.Message);
 			}
 		}
+
+		private void GetRecAutocomplete()
+		{
+			var apiInstance = new RecipesApi();
+			if (recSearchQuery.Length <= 0) return;
+			try
+			{
+				// Search Recipes by Ingredients
+				Task.Run(() => {
+					List<AutocompleteRecipeSearch200ResponseInner> response = apiInstance.AutocompleteRecipeSearch(RecSearchQuery,10);
+					IEnumerable<Recipe> result;
+					result = response.Select(r => new Recipe() { Id=Denullify(r.Id), Title = r.Title, Image = r.ImageType, MissingIngredients = { } }); //map to our own model type
+					foreach (Recipe recipe in result)
+					{
+						recipe.PopulateDetails();
+					}
+					
+					FoundRecipes = new ObservableCollection<Recipe>(result);
+				});
+
+
+
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
+
+
 		private int Denullify(int? n)
 		{
 			if (n == null) return 0;
@@ -149,6 +193,11 @@ namespace WellBites.MVVM
 			{
 				GetAutocomplete();
 				OnPropertyChanged(nameof(AutocompletePopupVisibility));
+			});
+			RecSearchChangedCommand = new RelayCommand((o) =>
+			{
+				GetRecAutocomplete();
+				//OnPropertyChanged(nameof(AutocompleteRecPopupVisibility));
 			});
 			IngredientSelectedCommand = new RelayCommand((selectedIndex) =>
 			{

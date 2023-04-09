@@ -21,7 +21,8 @@
 		<ScrollViewer>
 			<StackPanel Margin="10">
 		<Image Source="{Binding ViewedRecipe.BigImageURL}" Margin="10" Width="312"/>
-
+				<TextBlock Foreground="{DynamicResource TextColor}" FontWeight="Bold" FontSize="20">Summary</TextBlock>
+				<TextBlock FontSize="15" Foreground="{DynamicResource TextColor}" Text="{Binding ViewedRecipe.Summary}" TextWrapping="Wrap"></TextBlock>
 				<TextBlock Text="{Binding ViewedRecipe.MissingIngredientsString}">
 					<TextBlock.Style>
 						<Style TargetType="TextBlock">

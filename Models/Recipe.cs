@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Documents.DocumentStructures;
 using WellBites.Core;
@@ -59,12 +60,14 @@ namespace WellBites.Models
 		{
 			Id = 0;
 			Title = "untitled recipe";
+			MissingIngredients = new();
 
 		}
 
 		public string MissingIngredientsString {
 			get
 			{
+				if (MissingIngredients == null) return "";
 				if (MissingIngredients.Count == 0) return "You have all ingredients!";
 				else
 				{
@@ -89,6 +92,7 @@ namespace WellBites.Models
 				return MissingIngredients.Count > 0;
 			}
 		}
+		public string Summary { get; set; }
 		public List<SearchRecipesByIngredients200ResponseInnerMissedIngredientsInner> MissingIngredients { get; set; }
 
 		List<string> missingIngredients;
@@ -98,16 +102,27 @@ namespace WellBites.Models
 		{
 			RecipesApi apiInstance = new RecipesApi();
 			GetRecipeInformation200Response response = apiInstance.GetRecipeInformation(Id, true);
+
+			Title = response.Title;
+			Image = response.Image;
 			IsCheap = response.Cheap;
 			Cuisines = response.Cuisines;
+			Instructions = response.Instructions;
 			Diets = response.Diets;
 			CookingTimeInMinutes = response.ReadyInMinutes;
 			Instructions = response.Instructions;
-			Instructions = Instructions.Replace("<ol>", "");
-			Instructions = Instructions.Replace("</ol>", "");
-			Instructions = Instructions.Replace("<li>", "- ");
-			Instructions = Instructions.Replace("</li>", "\n");
-			
+			Summary = response.Summary;
+
+			if (Instructions != null)
+			{
+				Instructions = Instructions.Replace("<ol>", "");
+				Instructions = Instructions.Replace("</ol>", "");
+				Instructions = Instructions.Replace("<li>", "- ");
+				Instructions = Instructions.Replace("</li>", "\n");
+
+				Instructions = Regex.Replace(Instructions, "<.+>", "");
+				Instructions = Regex.Replace(Instructions, "</.+>", "");
+			}
 
 		Nutrition = apiInstance.GetRecipeNutritionWidgetByID(Id);
 
