@@ -18,14 +18,14 @@
 		</Grid.ColumnDefinitions>
 		<Border BorderThickness="0,0,1,0" Margin="0,20,0,20" BorderBrush="LightGray"/>
         <ListBox Margin="10" Background="{DynamicResource ListBoxBackground}" >
-	
-			<ListBoxItem>
-				<StackPanel Orientation="Horizontal">
+
+			<ListBoxItem PreviewMouseDown="findOption_MouseDown">
+				<StackPanel Orientation="Horizontal" >
                     <fa:ImageAwesome Foreground="{DynamicResource ListBoxText}" Icon="Cutlery" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource TListBoxText}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Find recipes</TextBlock>
 				</StackPanel>
 			</ListBoxItem>
-			<ListBoxItem HorizontalAlignment="Stretch">
+			<ListBoxItem HorizontalAlignment="Stretch" PreviewMouseDown="favoritesOption_MouseDown">
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <fa:ImageAwesome Foreground="{DynamicResource ListBoxText}" Icon="Star" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource ListBoxText}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Favorites</TextBlock>

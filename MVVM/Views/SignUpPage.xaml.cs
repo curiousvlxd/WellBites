@@ -56,7 +56,7 @@ namespace WellBites.Views
             _userViewModel.User.Activity = (Activity)cbActivity.SelectedItem;
             _userViewModel.User.Sex = (Sex)cbSex.SelectedItem;
             _userViewModel.UserManagerService.AddUser(_userViewModel.User);
-            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new DashboardPage(_userViewModel);
+            ((MainWindow)Application.Current.MainWindow).frame.Content = new DashboardPage(_userViewModel);
         }
 
         public bool IsFormValid()

@@ -82,7 +82,7 @@ namespace WellBites
                 ThemesToggleButton.IsChecked = true;
                 ThemesController.SetTheme(ThemesController.ThemeTypes.Dark); 
             }
-            FrameMain.Content = mainPage;
+            frame.Content = mainPage;
             //FrameMain.Content = new AuthPage();
             //FrameMain.Content = new CookingPage();
             //FrameMain.Content = new DashboardPage();

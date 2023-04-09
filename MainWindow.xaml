@@ -114,7 +114,7 @@
                 </Grid>
             </Border>
             <Grid Grid.Row="1">
-                <Frame NavigationUIVisibility="Hidden" x:Name="FrameMain"></Frame>
+                <Frame NavigationUIVisibility="Hidden" x:Name="frame"></Frame>
             </Grid>
         </Grid>
     </Border>
