@@ -20,7 +20,7 @@ namespace WellBites.Models
 		}
 		private FavoritesList()
 		{
-
+			Recipes = new List<Recipe>();
 		}
 		public List<Recipe> Recipes { get; set; }
 	}

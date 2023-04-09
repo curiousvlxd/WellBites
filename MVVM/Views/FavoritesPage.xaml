@@ -21,7 +21,8 @@
 		<vm:FavoritesViewModel/>
 	</Page.DataContext>
     <Grid>
-		<ListBox x:Name="recipesListbox" ItemsSource="{Binding Recipes}" Grid.Row="1" HorizontalContentAlignment="Stretch" Margin="10,0,0,0">
+		<TextBlock FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource TextColor}" Visibility="{Binding NoFavsTextVisibility}">No favourite recipes yet</TextBlock>
+		<ListBox x:Name="recipesListbox" ItemsSource="{Binding FavoritesList.Recipes}" Grid.Row="1" HorizontalContentAlignment="Stretch" Margin="10,0,0,0">
 			<ListBox.ItemTemplate>
 				<DataTemplate DataType="{x:Type models:Recipe}">
 					<Grid>
@@ -59,5 +60,9 @@
 				</i:EventTrigger>
 			</i:Interaction.Triggers>
 		</ListBox>
+		<Grid Visibility="{Binding RecipeDetailsVisibility}" Grid.Row="1" Background="{DynamicResource BackgroundColor}" Panel.ZIndex="1000">
+			<!--RIGHT SIDE - RECIPE DETAILS VIEW-->
+			<Frame Source="RecipeDetailsPage.xaml" Name="recipeDetailsFrame" DataContext="{Binding RecipeDetailsViewModel, BindsDirectlyToSource=True}"/>
+		</Grid>
 	</Grid>
 </Page>

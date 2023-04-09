@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WellBites.MVVM.ViewModels;
 
 namespace WellBites.MVVM.Views
 {
@@ -23,6 +24,12 @@ namespace WellBites.MVVM.Views
 		public FavoritesPage()
 		{
 			InitializeComponent();
+			var page = new RecipeDetailsPage();
+			var vm = ((FavoritesViewModel)this.DataContext).RecipeDetailsViewModel;
+			vm.page = page;
+			page.DataContext = vm;
+
+			recipeDetailsFrame.Content = page;
 		}
 	}
 }
