@@ -12,6 +12,7 @@ namespace Org.OpenAPITools.Model {
   /// </summary>
   [DataContract]
   public class GetRecipeNutritionWidgetByID200Response {
+      public Guid Id { get; set; }
     /// <summary>
     /// Gets or Sets Calories
     /// </summary>

@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using System.Drawing.Printing;
+using MaterialDesignThemes.Wpf;
 
 namespace WellBites.Helpers
 {
@@ -16,6 +17,8 @@ namespace WellBites.Helpers
         public static Size old_size { get; set; }
         public static Size default_size { get; set; }
         public static Window _this { get; set; }
+                
+        public static PaletteHelper paletteHelper = new PaletteHelper();
 
         [DllImport("user32")]
         internal static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);

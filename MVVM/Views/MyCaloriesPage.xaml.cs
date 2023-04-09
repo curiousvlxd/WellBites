@@ -13,16 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WellBites
+namespace WellBites.MVVM.Views
 {
-	/// <summary>
-	/// Interaction logic for CookingPage.xaml
-	/// </summary>
-	public partial class CookingPage : Page
-	{
-		public CookingPage()
-		{
-			InitializeComponent();
-		}
-	}
+    /// <summary>
+    /// Interaction logic for MyCaloriesPage.xaml
+    /// </summary>
+    public partial class MyCaloriesPage : Page
+    {
+        public MyCaloriesPage()
+        {
+            InitializeComponent();
+
+            //Will finish this page in the future, here should be an implementation of the 
+        }
+    }
 }

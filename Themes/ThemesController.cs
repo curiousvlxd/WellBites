@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Windows;
 
 namespace WellBites.Themes
@@ -29,14 +30,17 @@ namespace WellBites.Themes
             CurrentTheme = theme;
             switch (theme)
             {
-                case ThemeTypes.Dark: themeName = "DarkTheme"; break;
-                case ThemeTypes.Light: themeName = "LightTheme"; break;
+                case ThemeTypes.Dark: themeName = "Dark"; break;
+                case ThemeTypes.Light: themeName = "Light"; break;
             }
 
             try
             {
                 if (!string.IsNullOrEmpty(themeName))
-                    ChangeTheme(new Uri($"Themes/{themeName}.xaml", UriKind.Relative));
+                {
+                    Application.Current.Resources.MergedDictionaries[4].Source = new Uri($"pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.{themeName}.xaml");   
+                    ChangeTheme(new Uri($"Themes/{themeName}Theme.xaml", UriKind.Relative));
+                }
             }
             catch { }
         }

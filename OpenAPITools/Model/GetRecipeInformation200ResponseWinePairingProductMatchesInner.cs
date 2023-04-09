@@ -59,7 +59,7 @@ namespace Org.OpenAPITools.Model {
     /// </summary>
     [DataMember(Name="ratingCount", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "ratingCount")]
-    public int? RatingCount { get; set; }
+    public double? RatingCount { get; set; }
 
     /// <summary>
     /// Gets or Sets Score

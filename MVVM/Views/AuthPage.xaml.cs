@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WellBites.Models;
+using WellBites.MVVM.ViewModels;
+using WellBites.MVVM.Views;
 
 namespace WellBites.Views
 {
@@ -19,25 +22,63 @@ namespace WellBites.Views
     /// Interaction logic for AuthPage.xaml
     /// </summary>
     public partial class AuthPage : Page
-    {
-        public AuthPage()
+    {   
+        private UserViewModel _userViewModel;
+        private bool isHidden = true;
+        public AuthPage(UserViewModel userViewModel)
         {
             InitializeComponent();
+            _userViewModel = userViewModel;
         }
 
         private void BtnForgotPassword_OnClick(object sender, RoutedEventArgs e)
         {
-           
+           //Will be implemented in the future
         }
 
         private void BtnSignIn_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (_userViewModel.UserManagerService.AuthenticateUser(TbUsername.Text, PbPassword.Password))
+            {
+                ((MainWindow)Application.Current.MainWindow).frame.Content = new DashboardPage(_userViewModel);
+            }
         }
 
         private void BtnSignUp_OnClick(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).FrameMain.Content = new SignUpPage();
+            ((MainWindow)Application.Current.MainWindow).frame.Content = new SignUpPage(_userViewModel);
+        }
+
+        private void BtnHideunhide_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (isHidden)
+            {
+                TbPassword.Text = PbPassword.Password;
+                PbPassword.Visibility = Visibility.Collapsed;
+                TbPassword.Visibility = Visibility.Visible;
+                isHidden = false;
+                BtnUnHidePass.Visibility = Visibility.Visible;
+                BtnHidePass.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                PbPassword.Password = TbPassword.Text;
+                TbPassword.Visibility = Visibility.Collapsed;
+                PbPassword.Visibility = Visibility.Visible;
+                isHidden = true;
+                BtnUnHidePass.Visibility = Visibility.Collapsed;
+                BtnHidePass.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void PbPassword_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TbPassword.Text += PbPassword.Password;
+        }
+
+        private void TbPassword_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            PbPassword.Password += TbPassword.Text;
         }
     }
 }

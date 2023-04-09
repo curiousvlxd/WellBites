@@ -202,12 +202,17 @@ namespace Org.OpenAPITools.Client
             // at this point, it must be a model (json)
             try
             {
-                return JsonConvert.DeserializeObject(content, type);
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.Culture = CultureInfo.GetCultureInfo("en-US");
+                settings.FloatParseHandling = FloatParseHandling.Decimal;
+         
+				return JsonConvert.DeserializeObject(content, type, settings);
             }
             catch (IOException e)
             {
                 throw new ApiException(500, e.Message);
             }
+            
         }
 
         /// <summary>
