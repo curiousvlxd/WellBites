@@ -17,21 +17,21 @@
 		</Grid.ColumnDefinitions>
 		<Border BorderThickness="0,0,1,0" Margin="0,20,0,20" BorderBrush="LightGray"/>
 		<ListBox Margin="10">
-	
-			<ListBoxItem>
-				<StackPanel Orientation="Horizontal">
+
+			<ListBoxItem x:Name="findOption"  PreviewMouseDown="findOption_MouseDown">
+				<StackPanel Orientation="Horizontal" >
                     <fa:ImageAwesome Foreground="{DynamicResource TextColor}" Icon="Cutlery" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Find recipes</TextBlock>
 				</StackPanel>
 			</ListBoxItem>
-			<ListBoxItem HorizontalAlignment="Stretch">
-				<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+			<ListBoxItem HorizontalAlignment="Stretch" x:Name="favoritesOption" PreviewMouseDown="favoritesOption_MouseDown">
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch"  >
                     <fa:ImageAwesome Foreground="{DynamicResource TextColor}" Icon="Star" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Favorites</TextBlock>
 				</StackPanel>
 			</ListBoxItem>
 
 		</ListBox>
-		<Frame Grid.Column="1" Source="CookingPage.xaml"/>
+		<Frame Grid.Column="1" Source="CookingPage.xaml" x:Name="frame"/>
 	</Grid>
 </Page>
