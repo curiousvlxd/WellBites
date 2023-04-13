@@ -31,7 +31,7 @@
                     <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource ListBoxText}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">Favorites</TextBlock>
 				</StackPanel>
 			</ListBoxItem>
-            <ListBoxItem HorizontalAlignment="Stretch">
+            <ListBoxItem HorizontalAlignment="Stretch" PreviewMouseDown="myCalories_MouseDown">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <fa:ImageAwesome Foreground="{DynamicResource ListBoxText}" Icon="Calculator" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource ListBoxText}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15">MyCalories</TextBlock>

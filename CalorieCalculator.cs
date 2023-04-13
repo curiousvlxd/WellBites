@@ -51,7 +51,6 @@ internal class CalorieCalculator
 				default: //bmr
 					return 1;
 			}
-			
 	}
 	public int GetCaloriesPerDay(User user, Activity activity)
 	{

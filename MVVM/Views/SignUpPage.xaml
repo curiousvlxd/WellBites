@@ -33,7 +33,7 @@
             <Border Height="56"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent" Margin="0,11,0,0" Width="414" >
                 <Grid>
                     <fa:ImageAwesome Icon="User" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="13,0,0,0" />
-                    <TextBox x:Name="TbUsername" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1">
+                    <TextBox PreviewTextInput="UsernameValidation" x:Name="TbUsername" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1">
                     </TextBox>
                 </Grid>
             </Border>
@@ -41,15 +41,15 @@
             <Border Height="56"  HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent" Margin="0,85,0,0" Width="414" >
                 <Grid>
                     <fa:ImageAwesome Icon="envelope" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="13,0,0,0" />
-                    <TextBox x:Name="TbEmail" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="e-mail" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1"></TextBox>
+                    <TextBox PreviewTextInput="EmailValidation" x:Name="TbEmail" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="e-mail" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="31,-1,2,-1"></TextBox>
                 </Grid>
             </Border>
 
             <Border Height="56" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent"  Margin="0,160,0,0" Width="414" >
                 <Grid Height="50" VerticalAlignment="Top">
                     <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="14,0,0,0" />
-                    <PasswordBox materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
-                    <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="48,10.6,51,10"/>
+                    <PasswordBox PreviewTextInput="PasswordValidation" materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
+                    <TextBox PreviewTextInput="PasswordValidation" Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPassword" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="48,10.6,51,10"/>
                     <Grid Background="Transparent" Visibility="Visible" MouseDown="BtnHideunhide_OnMouseDown" Height="15" Width="22" Name="BtnHidePass" Margin="371,18,15,17">
                         <fa:ImageAwesome Icon="Eye" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" />
                         <Grid.Style>
@@ -81,8 +81,8 @@
             <Border Height="56" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#EDEEEF" CornerRadius="10" BorderThickness="3" Background="Transparent"  Margin="0,235,0,0" Width="414" >
                 <Grid Height="50" VerticalAlignment="Top">
                     <fa:ImageAwesome Icon="Lock" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="21" Margin="14,0,0,0" />
-                    <PasswordBox materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPasswordRepeat" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Repeat password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
-                    <TextBox Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPasswordRepeat" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Repeat password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="48,10.6,51,10"/>
+                    <PasswordBox PreviewTextInput="PasswordValidation" materialDesign:HintAssist.FloatingOffset="1,1" x:Name="PbPasswordRepeat" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Repeat password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14" BorderBrush="Transparent" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="31,-1,37,-1"></PasswordBox>
+                    <TextBox PreviewTextInput="PasswordValidation" Visibility="Collapsed" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  x:Name="TbPasswordRepeat" Foreground="{DynamicResource TextColor}" materialDesign:HintAssist.Hint="Repeat password" materialDesign:HintAssist.Foreground="{DynamicResource HintAssistColor}" materialDesign:HintAssist.IsFloating="False" FontWeight="Medium" FontSize="14 " BorderBrush="Transparent" Style="{StaticResource MaterialDesignTextBox}" Margin="48,10.6,51,10"/>
                     <Grid Background="Transparent" Visibility="Visible" MouseDown="BtnHideunhideInRepeatPass_OnMouseDown" Height="15" Width="22" Name="BtnHideRepeatPass" Margin="371,18,15,17">
                         <fa:ImageAwesome Icon="Eye" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Left" />
                         <Grid.Style>
@@ -115,11 +115,11 @@
 
         <ComboBox x:Name="cbSex" FontSize="20" FontWeight="DemiBold" materialDesign:HintAssist.Hint="Sex" Foreground="{DynamicResource TextColor}" ItemsSource="{Binding Source={StaticResource Sex}}" Height="36" Margin="278,438,587,0" VerticalAlignment="Top"/>
 
-        <DatePicker x:Name="dpDateOfBirth" PreviewTextInput="NumberValidationDatePicker" FontWeight="DemiBold" materialDesign:HintAssist.Hint="Date of birth" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="278,559,552,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpDateOfBirth" PreviewTextInput="DateValidation" FontWeight="DemiBold" materialDesign:HintAssist.Hint="Date of birth" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="278,559,552,0" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="tbWeight" PreviewTextInput="NumberValidationTextBox" materialDesign:HintAssist.Hint="Weight (in kg)" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="DemiBold" Margin="560,439,278,356" RenderTransformOrigin="0.455,0.571"/>
+        <TextBox x:Name="tbWeight" PreviewTextInput="WeightValidation" materialDesign:HintAssist.Hint="Weight (in kg)" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="DemiBold" Margin="560,439,278,356" RenderTransformOrigin="0.455,0.571"/>
 
-        <TextBox x:Name="tbHeight" PreviewTextInput="NumberValidationTextBox" materialDesign:HintAssist.Hint="Height (in cm)" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="DemiBold" Margin="560,499,278,296" RenderTransformOrigin="0.455,0.571"/>
+        <TextBox x:Name="tbHeight" PreviewTextInput="HeightValidation" materialDesign:HintAssist.Hint="Height (in cm)" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="DemiBold" Margin="560,499,278,296" RenderTransformOrigin="0.455,0.571"/>
 
         <Button Click="BtnGoBack_OnClick" VerticalAlignment="Top" HorizontalContentAlignment="Center" x:Name="btnGoBack" Width="193" Height="40" Background="{DynamicResource LogoTextColor}" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="278,629,0,0">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">

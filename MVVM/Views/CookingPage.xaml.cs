@@ -13,15 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WellBites.Models;
-using WellBites.MVVM;
+using WellBites.MVVM.ViewModels;
 using WellBites.MVVM.Views;
 
 namespace WellBites
 {
-	/// <summary>
-	/// Interaction logic for CookingPage.xaml
-	/// </summary>
-	public partial class CookingPage : Page
+    /// <summary>
+    /// Interaction logic for CookingPage.xaml
+    /// </summary>
+    public partial class CookingPage : Page
 	{
 		public CookingPage()
 		{
@@ -30,9 +30,7 @@ namespace WellBites
 			var vm = ((CookingViewModel)this.DataContext).RecipeDetailsViewModel;
 			vm.page = page;
 			page.DataContext = vm;
-
 			recipeDetailsFrame.Content = page;
-
 
 		}
 

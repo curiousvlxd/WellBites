@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Org.OpenAPITools.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using WellBites.Models;
 
 namespace WellBites.DataAccess
@@ -16,11 +18,13 @@ namespace WellBites.DataAccess
         }
 
         public DbSet<User> Users { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(entity =>
-            {
+            {   
+                entity.Property(u => u.Id)
+                    .HasDefaultValueSql("NEWID()");
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Username)
                     .IsRequired();
@@ -45,6 +49,7 @@ namespace WellBites.DataAccess
                 entity.Property(e => e.Activity)
                     .HasConversion<string>();
             });
+
 
             base.OnModelCreating(modelBuilder);
         }

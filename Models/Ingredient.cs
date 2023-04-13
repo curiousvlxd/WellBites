@@ -21,7 +21,6 @@ namespace WellBites.Models
 			get { 
 				string url = "https://spoonacular.com/cdn/ingredients_100x100/" + Image;
 				return url;
-
 			}
 		}
 	}

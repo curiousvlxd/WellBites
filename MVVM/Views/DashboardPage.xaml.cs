@@ -16,10 +16,10 @@ using WellBites.MVVM.ViewModels;
 
 namespace WellBites.MVVM.Views
 {
-	/// <summary>
-	/// Interaction logic for DashboardPage.xaml
-	/// </summary>
-	public partial class DashboardPage : Page
+    /// <summary>
+    /// Interaction logic for DashboardPage.xaml
+    /// </summary>
+    public partial class DashboardPage : Page
 	{	
 		private UserViewModel _userViewModel;
 
@@ -34,9 +34,7 @@ namespace WellBites.MVVM.Views
 
 		private void findOption_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-
 			//frame.Content = new CookingPage();
-
 			frame.Content = new CookingPage();
 			frame.DataContext = cookingvm;
 		}
@@ -47,5 +45,11 @@ namespace WellBites.MVVM.Views
 			frame.DataContext = favvm;
 
 		}
-	}
+
+        private void myCalories_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            frame.Content = new MyCaloriesPage();
+            frame.DataContext = _userViewModel;
+        }
+    }
 }

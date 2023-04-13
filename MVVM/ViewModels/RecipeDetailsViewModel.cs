@@ -16,7 +16,6 @@ namespace WellBites.MVVM.ViewModels
 
 		public Page page; //because screw mvvm
 		
-
 		public Recipe ViewedRecipe { get
 			{
 				return viewedRecipe;

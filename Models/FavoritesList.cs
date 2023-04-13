@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace WellBites.Models
 {
-	internal class FavoritesList
-	{
-		static FavoritesList instance;
-		public static FavoritesList Instance
-		{
-			get
-			{
-				if (instance == null) instance = new FavoritesList();
-				return instance;
-			}
+    internal class FavoritesList
+    {
+        static FavoritesList instance;
+        public static FavoritesList Instance
+        {
+            get
+            {
+                if (instance == null) instance = new FavoritesList();
+                return instance;
+            }
 
-		}
-		private FavoritesList()
-		{
-			Recipes = new List<Recipe>();
-		}
-		public List<Recipe> Recipes { get; set; }
-	}
+        }
+        private FavoritesList()
+        {
+            Recipes = new List<Recipe>();
+        }
+        public List<Recipe> Recipes { get; set; }
+    }
 }
