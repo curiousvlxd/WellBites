@@ -1,5 +1,17 @@
-# WellBites
-WellBites is an all-in-one application designed to help users achieve their health and fitness goals through personalized meal plans and nutritional guidance.
+# WellBites 🍽️
+WellBites is a comprehensive application that is specifically designed to help users find recipes tailored to their individual needs.
+
+This project was presented at a HYS Hackathon 2023 where [we](https://github.com/curiousvlxd/WellBites/graphs/contributors) took 2nd place.
+
+WellBites using [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+##### Technology stack:
+`Front-end` | `Back-end`
+--- | ---
+**WPF** | **EF Core**
+**MaterialDesign** | **MSSQL**
+**MVVM** | **Dependency Injection**
+
+
 
 
 ## Login page
