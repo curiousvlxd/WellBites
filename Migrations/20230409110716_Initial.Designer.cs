@@ -12,7 +12,7 @@ using WellBites.DataAccess;
 namespace WellBites.Migrations
 {
     [DbContext(typeof(WellBitesDbContext))]
-    [Migration("20230409033556_Initial")]
+    [Migration("20230409110716_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -29,7 +29,8 @@ namespace WellBites.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Activity")
                         .IsRequired()

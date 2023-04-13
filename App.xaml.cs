@@ -49,8 +49,8 @@ namespace WellBites
             //dbContext.SaveChanges();
             AuthPage authPage = new AuthPage(new UserViewModel(userManagerService));
             
-            DashboardPage page = new DashboardPage(new UserViewModel(userManagerService));
-               new MainWindow(page, configuration.GetSection("api-keys")["x-api-key"]).Show();
+            //DashboardPage page = new DashboardPage(new UserViewModel(userManagerService)); 
+               new MainWindow(authPage, configuration.GetSection("api-keys")["x-api-key"]).Show();
         }
     }
 }
