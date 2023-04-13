@@ -106,7 +106,20 @@ namespace WellBites.Models
                 return MissingIngredients.Count > 0;
             }
         }
-        public string Summary { get; set; }
+
+
+        private string _summary;
+
+        public string Summary
+        {
+            get { return Regex.Replace(_summary, "<.*?>", String.Empty); }
+            set
+            {
+                _summary = value;
+                OnPropertyChanged();
+            }
+        }
+
         public List<SearchRecipesByIngredients200ResponseInnerMissedIngredientsInner> MissingIngredients { get; set; }
 
         List<string> missingIngredients;
